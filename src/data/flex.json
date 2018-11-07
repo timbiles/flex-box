@@ -1,0 +1,27 @@
+{
+    "direction": {
+        "name": "flex-direction",
+        "arr": ["row", "row-reverse", "column", "column-reverse"],
+        "value": ""
+    },
+    "wrap": {
+        "name": "flex-wrap",
+        "arr": ["nowrap", "wrap", "wrap-reverse"],
+        "value": ""
+    },
+    "justifyContent": {
+        "name": "justify-content",
+        "arr": ["flex-start", "flex-end", "center", "space-between", "space-around", "space-evenly"],
+        "value": ""
+    },
+    "alignItems": {
+        "name": "align-items",
+        "arr": ["stretch", "flex-start", "flex-end", "center", "baseline"],
+        "value": ""
+    },
+    "alignContent": {
+        "name": "align-content",
+        "arr": ["stretch", "flex-start", "flex-end", "center", "space-between", "space-around", "space-evenly"],
+        "value": ""
+    }
+}

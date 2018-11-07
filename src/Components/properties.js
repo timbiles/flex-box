@@ -1,69 +1,45 @@
 import React, { Component } from 'react';
+import styled, { css } from 'styled-components';
+import flex from '../data/flex.json';
 
-import styled, {css} from 'styled-components';
+const Container = styled.div`
+  display: flex;
 
+  ${props => props.primary && css`
+    width: 100vw;
+    flex-direction: column;
+    justify-content: flex-start;
+  `}
+`;
 
 const Flex = styled.div`
-    display: flex;
-    flex-direction: ${props => props.direction};
-    flex-wrap: ${props => props.wrap};
-    justify-content: ${props => props.justifyContent};
-    align-items: ${props => props.alignItems};
-    align-content: ${props => props.alignContent};  
-    
-    p & css`
-    border: 
-    `
-`
+  display: flex;
+  flex-direction: ${props => props.direction};
+  flex-wrap: ${props => props.wrap};
+  justify-content: ${props => props.justifyContent};
+  align-items: ${props => props.alignItems};
+  align-content: ${props => props.alignContent};
+`;
+
+const P = styled.p`
+  border: 1px solid #000;
+`;
 
 class properties extends Component {
-  state = {
-    direction: {
-      name: 'flex-direction',
-      arr: ['row', 'row-reverse', 'column', 'column-reverse'],
-      value: ''
-    },
-    wrap: {
-      name: 'flex-wrap',
-      arr: ['nowrap', 'wrap', 'wrap-reverse'],
-      value: ''
-    },
-    justifyContent: {
-      name: 'justify-content',
-      arr: [
-        'flex-start',
-        'flex-end',
-        'center',
-        'space-between',
-        'space-around',
-        'space-evenly'
-      ],
-      value: ''
-    },
-    alignItems: {
-      name: 'align-items',
-      arr: ['stretch', 'flex-start', 'flex-end', 'center', 'baseline'],
-      value: ''
-    },
-    alignContent: {
-      name: 'align-content',
-      arr: [
-        'stretch',
-        'flex-start',
-        'flex-end',
-        'center',
-        'space-between',
-        'space-around'
-      ],
-      value: ''
+    state = {}
+
+    componentDidMount() {
+        this.setState(flex)
+        console.log('hit')
     }
-  };
 
   map = (val, name) => {
+      console.log(this.state)
+      
     return (
-      <>
-        <h2>{val.name}</h2>
-        {val.arr.map((e, i) => {
+      <Container primary>
+        <h2>{val && val.name}</h2>
+        {val && val.arr.map((e, i) => {
           return (
             <div key={i}>
               <input
@@ -80,9 +56,10 @@ class properties extends Component {
             </div>
           );
         })}
-      </>
+      </Container>
     );
   };
+
   render() {
     console.log(this.state);
     const {
@@ -94,28 +71,26 @@ class properties extends Component {
     } = this.state;
 
     return (
-      <div>
-        {this.map(direction, 'direction')}
-        <br />
-        {this.map(wrap, 'wrap')}
-        <br />
-        {this.map(justifyContent, 'justifyContent')}
-        <br />
-        {this.map(alignItems, 'alignItems')}
-        <br />
-        {this.map(alignContent, 'alignContent')}
+      <>
+        <Container>
+          {this.map(direction, 'direction')}
+          {this.map(wrap, 'wrap')}
+          {this.map(justifyContent, 'justifyContent')}
+          {this.map(alignItems, 'alignItems')}
+          {this.map(alignContent, 'alignContent')}
+        </Container>
         <Flex
-            direction={direction.value}
-            wrap={wrap.value}
-            justifyContent={justifyContent.value}
-            alignItems={alignItems.value}
+          direction={direction && direction.value}
+          wrap={wrap && wrap.value}
+          justifyContent={justifyContent && justifyContent.value}
+          alignItems={alignItems && alignItems.value}
         >
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-            <p>4</p>
+          <P>1</P>
+          <P>2</P>
+          <P>3</P>
+          <P>4</P>
         </Flex>
-      </div>
+      </>
     );
   }
 }
