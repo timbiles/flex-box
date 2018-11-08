@@ -13,6 +13,15 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
 
+  h2 {
+        border-bottom: 1px solid #000;
+        padding-bottom: 2%;
+        margin-top: 5%;        
+        margin-bottom: 2%;
+        width: max-content;
+        align-self: center;
+      }
+
 ${props =>
   props.main &&
   css`
@@ -31,14 +40,7 @@ ${props =>
     css`
       flex-direction: column;
       justify-content: flex-start;
-      margin-top: 5%;
-      h2 {
-        border-bottom: 1px solid #000;
-        padding-bottom: 2%;
-        margin-bottom: 2%;
-        width: max-content;
-        align-self: center;
-      }
+      text-align: center;
     `}
     ${props =>
       props.third &&
@@ -73,8 +75,4 @@ export const Btn = styled.button`
     background: #9cb8b8;
     border-radius: 5px;
   }
-`;
-
-export const Pre = styled.pre`
-  display: ${props => props.display};
 `;

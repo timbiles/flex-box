@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Header} from './styles/flex';
 
 import Properties from './Components/properties';
 import './App.scss';
@@ -6,9 +7,10 @@ import './App.scss';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <>
+        <Header>Flex Box Playground</Header>      
           <Properties />
-      </div>
+      </>
     );
   }
 }

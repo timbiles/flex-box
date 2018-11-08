@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Header, Container, Flex, P, Btn, Pre } from '../styles/flex';
+import { Container, Flex, P, Btn } from '../styles/flex';
+import { Modal, Section, Pre } from '../styles/modal';
 import flex from '../data/flex.json';
 
 class properties extends Component {
@@ -47,6 +48,12 @@ class properties extends Component {
     return arr.map((e, i) => <P key={i}>{e}</P>);
   };
 
+  handleClose = (e) => {
+    if(e.target.id === 'modal'){
+    this.setState({ display: false });      
+    }
+  }
+
   render() {
     const {
       direction,
@@ -57,11 +64,10 @@ class properties extends Component {
       number,
       display
     } = this.state;
-    console.log(display)
+    console.log(display);
 
     return (
-      <>
-        <Header>Flex Box Playground</Header>
+      <>   
         <Container main>
           <Container primary>
             {this.map(direction, 'direction')}
@@ -69,16 +75,20 @@ class properties extends Component {
             {this.map(justifyContent, 'justifyContent')}
             {this.map(alignItems, 'alignItems')}
             {this.map(alignContent, 'alignContent')}
+            
+            <h2>Containers</h2>
             <Container third>
               <Btn onClick={() => this.setState({ number: number - 1 })}>-</Btn>
               {number}
               <Btn onClick={() => this.setState({ number: number + 1 })}>+</Btn>
             </Container>
             <Container secondary>
-                <Btn onClick={() => this.setState({display: !display})}>
-                    Get Code
-                </Btn>
-                <Pre display={display ? 'block' : 'none'}>{`
+              <Btn onClick={() => this.setState({ display: !display })}>
+                Get Code
+              </Btn>
+              <Modal display={display ? 'block' : 'none'} id='modal' onClick={e => this.handleClose(e)}>
+                <Section>
+                <Pre>{`
 .container {
     display: flex;
     flex-direction: ${direction && direction.value};
@@ -88,6 +98,8 @@ class properties extends Component {
     alignt-content: ${alignContent && alignContent.value};
 }
                 `}</Pre>
+                </Section>
+              </Modal>
             </Container>
           </Container>
           <Flex
