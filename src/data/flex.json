@@ -2,26 +2,26 @@
     "direction": {
         "name": "flex-direction",
         "arr": ["row", "row-reverse", "column", "column-reverse"],
-        "value": ""
+        "value": "row"
     },
     "wrap": {
         "name": "flex-wrap",
         "arr": ["nowrap", "wrap", "wrap-reverse"],
-        "value": ""
+        "value": "no-wrap"
     },
     "justifyContent": {
         "name": "justify-content",
         "arr": ["flex-start", "flex-end", "center", "space-between", "space-around", "space-evenly"],
-        "value": ""
+        "value": "flex-start"
     },
     "alignItems": {
         "name": "align-items",
         "arr": ["stretch", "flex-start", "flex-end", "center", "baseline"],
-        "value": ""
+        "value": "stretch"
     },
     "alignContent": {
         "name": "align-content",
         "arr": ["stretch", "flex-start", "flex-end", "center", "space-between", "space-around", "space-evenly"],
-        "value": ""
+        "value": "stretch"
     }
 }
