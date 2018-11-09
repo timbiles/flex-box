@@ -62,9 +62,21 @@ export const Flex = styled.div`
 `;
 
 export const P = styled.p`
-  box-shadow: 2px 4px 9px -1px #000;
-  background: #f4f4f4;
-  padding: 5%;
+
+  ${props =>
+    props.main &&
+    css`
+      box-shadow: 2px 4px 9px -1px #000;
+      background: #f4f4f4;
+      padding: 5%;
+      width: ${props => props.width};
+      height: ${props => props.height};
+    `}
+    ${props =>
+    props.secondary &&
+    css`
+    margin-right: 5%;
+    `}
 `;
 
 export const Btn = styled.button`

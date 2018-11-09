@@ -41,11 +41,16 @@ class properties extends Component {
   };
 
   pLoop = num => {
+    const { width, height } = this.state;
     const arr = [];
     for (let i = 1; i <= num; i++) {
       arr.push(i);
     }
-    return arr.map((e, i) => <P key={i}>{e}</P>);
+    return arr.map((e, i) => (
+      <P main key={i} width={width && width} height={height}>
+        {e}
+      </P>
+    ));
   };
 
   handleClose = e => {
@@ -76,7 +81,7 @@ class properties extends Component {
             {this.map(alignItems, 'alignItems')}
             {this.map(alignContent, 'alignContent')}
 
-            <h2>Containers</h2>
+            <h2>Quantity</h2>
             <Container third>
               <Btn onClick={() => this.setState({ number: number - 1 })}>-</Btn>
               {number}
@@ -85,13 +90,31 @@ class properties extends Component {
                   this.setState(
                     wrap.value === 'no-wrap' && number <= 8
                       ? { number: number + 1 }
-                      : wrap.value === 'no-wrap' && number > 9 ? {number: 9}
-                      : wrap.value === 'wrap' ? {number: number + 1} : null
+                      : wrap.value === 'no-wrap' && number > 9
+                      ? { number: 9 }
+                      : wrap.value === 'wrap'
+                      ? { number: number + 1 }
+                      : null
                   )
                 }
               >
                 +
               </Btn>
+            </Container>
+            <h2>Size (px)</h2>
+            <Container third>
+              <P secondary>Width</P>
+              <input
+                type="number"
+                onChange={e => this.setState({ width: e.target.value + 'px' })}
+              />
+            </Container>
+            <Container third>
+              <P secondary>Height</P>
+              <input
+                type="number"
+                onChange={e => this.setState({ height: e.target.value + 'px' })}
+              />
             </Container>
             <Container secondary>
               <Btn onClick={() => this.setState({ display: !display })}>
