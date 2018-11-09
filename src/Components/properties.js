@@ -48,11 +48,11 @@ class properties extends Component {
     return arr.map((e, i) => <P key={i}>{e}</P>);
   };
 
-  handleClose = (e) => {
-    if(e.target.id === 'modal'){
-    this.setState({ display: false });      
+  handleClose = e => {
+    if (e.target.id === 'modal') {
+      this.setState({ display: false });
     }
-  }
+  };
 
   render() {
     const {
@@ -64,10 +64,10 @@ class properties extends Component {
       number,
       display
     } = this.state;
-    console.log(display);
+    console.log(this.state);
 
     return (
-      <>   
+      <>
         <Container main>
           <Container primary>
             {this.map(direction, 'direction')}
@@ -75,20 +75,35 @@ class properties extends Component {
             {this.map(justifyContent, 'justifyContent')}
             {this.map(alignItems, 'alignItems')}
             {this.map(alignContent, 'alignContent')}
-            
+
             <h2>Containers</h2>
             <Container third>
               <Btn onClick={() => this.setState({ number: number - 1 })}>-</Btn>
               {number}
-              <Btn onClick={() => this.setState({ number: number + 1 })}>+</Btn>
+              <Btn
+                onClick={() =>
+                  this.setState(
+                    wrap.value === 'no-wrap' && number <= 8
+                      ? { number: number + 1 }
+                      : wrap.value === 'no-wrap' && number > 9 ? {number: 9}
+                      : wrap.value === 'wrap' ? {number: number + 1} : null
+                  )
+                }
+              >
+                +
+              </Btn>
             </Container>
             <Container secondary>
               <Btn onClick={() => this.setState({ display: !display })}>
                 Get Code
               </Btn>
-              <Modal display={display ? 'block' : 'none'} id='modal' onClick={e => this.handleClose(e)}>
+              <Modal
+                display={display ? 'block' : 'none'}
+                id="modal"
+                onClick={e => this.handleClose(e)}
+              >
                 <Section>
-                <Pre>{`
+                  <Pre>{`
 .container {
     display: flex;
     flex-direction: ${direction && direction.value};
@@ -107,7 +122,11 @@ class properties extends Component {
             wrap={wrap && wrap.value}
             justifyContent={justifyContent && justifyContent.value}
             alignItems={alignItems && alignItems.value}
+            alignContent={alignContent && alignContent.value}
+            width={wrap && wrap.value === 'wrap' ? '500px' : 'auto'}
+            height={wrap && wrap.value === 'wrap' ? '500px' : 'auto'}
           >
+            {console.log(wrap)}
             {this.pLoop(number)}
           </Flex>
         </Container>

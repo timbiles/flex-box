@@ -57,6 +57,8 @@ export const Flex = styled.div`
   justify-content: ${props => props.justifyContent};
   align-items: ${props => props.alignItems};
   align-content: ${props => props.alignContent};
+  width: ${props => props.width};
+  height: ${props => props.height};
 `;
 
 export const P = styled.p`
