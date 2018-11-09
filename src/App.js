@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Header } from './styles/flex';
-import { Arrow } from './styles/home'
+import { Arrow } from './styles/home';
 
 import Properties from './Components/properties';
 import Grid from './Components/grid';
@@ -8,21 +8,29 @@ import './App.scss';
 
 class App extends Component {
   state = {
-    flex: true
-  }
+    flex: true,
+    title: 'Flex Box Playground'
+  };
   render() {
-    const {flex} = this.state
+    const { flex, title } = this.state;
     return (
       <>
-        <Header>Flex Box Playground</Header> 
-       {flex ? 
-       <>
-      <Arrow onClick={() => this.setState({flex: !flex})}>></Arrow>     
-          <Properties />
+        <Header>{title}</Header>
+        {flex ? (
+          <>
+            <Arrow primary onClick={() => this.setState({ flex: !flex, title: 'Grid Playground' })}>
+              >
+            </Arrow>
+              <Properties />
           </>
-          :
-          <Grid />
-      } 
+        ) : (
+          <>
+            <Arrow secondary onClick={() => this.setState({ flex: !flex, title: 'Flex Box Playground' })}>
+              {`<`}
+            </Arrow>
+            <Grid />
+          </>
+        )}
       </>
     );
   }
