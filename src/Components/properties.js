@@ -13,6 +13,16 @@ class properties extends Component {
     this.setState(flex);
   }
 
+  changeState = (e, val, name) => {
+    this.setState({ [name]: { ...val, value: e.target.value } }, () => {
+      this.state.wrap.value === 'nowrap' &&
+        this.state.number > 8 &&
+        this.setState({
+          number: 8
+        });
+    });
+  };
+
   map = (val, name) => {
     return (
       <Container secondary>
@@ -26,11 +36,7 @@ class properties extends Component {
                   type="radio"
                   value={e}
                   defaultChecked={i === 0 && true}
-                  onChange={e => {
-                    this.setState({
-                      [name]: { ...val, value: e.target.value }
-                    });
-                  }}
+                  onChange={e => this.changeState(e, val, name)}
                 />
                 <label htmlFor="">{e}</label>
               </div>
@@ -88,11 +94,11 @@ class properties extends Component {
               <Btn
                 onClick={() =>
                   this.setState(
-                    wrap.value === 'no-wrap' && number <= 8
+                    wrap.value === 'nowrap' && number < 8
                       ? { number: number + 1 }
-                      : wrap.value === 'no-wrap' && number > 9
-                      ? { number: 9 }
-                      : wrap.value === 'wrap'
+                      : wrap.value === 'nowrap' && number > 8
+                      ? { number: 8 }
+                      : wrap.value !== 'nowrap' 
                       ? { number: number + 1 }
                       : null
                   )
@@ -149,7 +155,6 @@ class properties extends Component {
             width={wrap && wrap.value === 'wrap' ? '500px' : 'auto'}
             height={wrap && wrap.value === 'wrap' ? '500px' : 'auto'}
           >
-            {console.log(wrap)}
             {this.pLoop(number)}
           </Flex>
         </Container>

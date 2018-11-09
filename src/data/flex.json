@@ -7,7 +7,7 @@
     "wrap": {
         "name": "flex-wrap",
         "arr": ["nowrap", "wrap", "wrap-reverse"],
-        "value": "no-wrap"
+        "value": "nowrap"
     },
     "justifyContent": {
         "name": "justify-content",
