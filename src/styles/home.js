@@ -6,7 +6,6 @@ export const Arrow = styled.div`
   right: ${props => props.primary && '2%'};
   left: ${props => props.secondary && '2%'};
   font-size: 2em;
-  color: #555;
   cursor: pointer;
   &:hover {
     transform: scale(1.05);

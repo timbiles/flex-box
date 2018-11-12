@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Flex, P, Btn } from '../styles/flex';
+import { Container, Flex, P, Btn, Input } from '../styles/flex';
 import { Modal, Section, Pre } from '../styles/modal';
 import flex from '../data/flex.json';
 
@@ -30,8 +30,8 @@ class properties extends Component {
         {val &&
           val.arr.map((e, i) => {
             return (
-              <div key={i}>
-                <input
+              <Container key={i}>
+                <Input
                   name={name}
                   type="radio"
                   value={e}
@@ -39,7 +39,7 @@ class properties extends Component {
                   onChange={e => this.changeState(e, val, name)}
                 />
                 <label htmlFor="">{e}</label>
-              </div>
+              </Container>
             );
           })}
       </Container>
@@ -89,7 +89,7 @@ class properties extends Component {
 
             <h2>Quantity</h2>
             <Container third>
-              <Btn onClick={() => this.setState({ number: number - 1 })}>-</Btn>
+              <Btn onClick={() => this.setState( number !== 1 ? { number: number - 1 } : null)}>-</Btn>
               {number}
               <Btn
                 onClick={() =>
@@ -98,7 +98,7 @@ class properties extends Component {
                       ? { number: number + 1 }
                       : wrap.value === 'nowrap' && number > 8
                       ? { number: 8 }
-                      : wrap.value !== 'nowrap' 
+                      : wrap.value !== 'nowrap'
                       ? { number: number + 1 }
                       : null
                   )
@@ -152,8 +152,8 @@ class properties extends Component {
             justifyContent={justifyContent && justifyContent.value}
             alignItems={alignItems && alignItems.value}
             alignContent={alignContent && alignContent.value}
-            width={wrap && wrap.value === 'wrap' ? '500px' : 'auto'}
-            height={wrap && wrap.value === 'wrap' ? '500px' : 'auto'}
+            width={wrap && wrap.value === 'nowrap' ? 'auto' : '500px'}
+            height={wrap && wrap.value === 'nowrap' ? 'auto' : '500px'}
           >
             {this.pLoop(number)}
           </Flex>

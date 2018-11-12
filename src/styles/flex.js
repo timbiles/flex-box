@@ -5,7 +5,7 @@ export const Header = styled.div`
   justify-content: center;
   align-items: center;
   height: 10vh;
-  background: grey;
+  background: #94BFBE;
   font-size: 2em;
 `;
 
@@ -62,7 +62,6 @@ export const Flex = styled.div`
 `;
 
 export const P = styled.p`
-
   ${props =>
     props.main &&
     css`
@@ -75,7 +74,7 @@ export const P = styled.p`
     ${props =>
     props.secondary &&
     css`
-    margin-right: 5%;
+      margin-right: 5%;
     `}
 `;
 
@@ -88,5 +87,14 @@ export const Btn = styled.button`
   &:hover {
     background: #9cb8b8;
     border-radius: 5px;
+  }
+`;
+
+export const Input = styled.input`
+  &:hover {
+    background: #9faab7;
+  }
+  &:checked {
+    background: #40e0d0;
   }
 `;

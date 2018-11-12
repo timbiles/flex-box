@@ -11,5 +11,12 @@ export const SideNav = styled.div`
 `
 
 export const Main = styled.div`
+    height: 90vh;
     display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+`
+
+export const Cont = styled.div`
+    border: 1px solid grey;
 `
