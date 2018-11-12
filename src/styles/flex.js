@@ -83,11 +83,19 @@ export const Btn = styled.button`
   width: max-content;
   padding: 1% 3%;
   margin: 0 5%;
+  border-radius: 5px;  
 
   &:hover {
     background: #9cb8b8;
-    border-radius: 5px;
   }
+
+  &:focus {
+      outline: none;
+  }
+
+  ${props=> props.grid && css`
+        margin: 0;
+  `}
 `;
 
 export const Input = styled.input`

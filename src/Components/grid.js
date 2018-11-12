@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, SideNav, Main, Cont } from '../styles/gridStyles';
+import {Btn} from '../styles/flex';
 
 class grid extends Component {
     state = {
@@ -23,9 +24,9 @@ class grid extends Component {
       <>
         <Grid>
           <SideNav>
-              Side nav
-            <button onClick={() => this.setState({number: number + 1})}>Add</button>
-            <button onClick={() => this.setState({number: number -1})}>Remove</button>
+              Grid Styles
+            <Btn grid onClick={() => this.setState({number: number + 1})}>Add</Btn>
+            <Btn grid onClick={() => this.setState({number: number -1})}>Remove</Btn>
           </SideNav>
           <Main>
             {this.gridLoop()}           

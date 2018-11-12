@@ -9,7 +9,7 @@ import './App.scss';
 class App extends Component {
   state = {
     flex: false,
-    title: 'Flex Box Playground'
+    title: 'Grid Playground'
   };
   render() {
     const { flex, title } = this.state;
