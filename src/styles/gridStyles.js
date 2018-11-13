@@ -8,7 +8,7 @@ export const Grid = styled.div`
 
 export const SideNav = styled.div`
   display: inline-grid;
-  grid-template-rows: repeat(3, .2fr) repeat(3, 30px);
+  grid-template-rows: repeat(4, 0.2fr) repeat(3, 30px);
   grid-template-columns: 0.75fr;
   grid-row-gap: 10px;
 `;
@@ -16,24 +16,31 @@ export const SideNav = styled.div`
 export const Main = styled.div`
   height: 90vh;
   display: grid;
-  grid-template-columns: ${props => (props.columns ? props.columns : '1fr 1fr')};
-  grid-template-rows: ${props => (props.rows ? props.rows : '1fr 1fr')};  
+  grid-template-columns: ${props =>
+    props.columns ? props.columns : '1fr 1fr'};
+  grid-template-rows: ${props => (props.rows ? props.rows : '1fr 1fr')};
   grid-row-gap: ${props => (props.rowGap ? props.rowGap : '5px')};
-  grid-column-gap: ${props => (props.columnGap ? props.columnGap : '5px')};  
+  grid-column-gap: ${props => (props.columnGap ? props.columnGap : '5px')};
 `;
 
 export const Container = styled.div`
-    display: grid;
+  display: grid;
 
-    ${props =>
+  ${props =>
     props.primary &&
     css`
-    justify-items: center;    
-    grid-template-columns: 1fr repeat(2, 1fr);
-    height: max-content;
+      justify-items: center;
+      grid-template-columns: 1fr repeat(2, 1fr);
+      height: max-content;
     `}
-`
+`;
 
 export const Cont = styled.div`
+    height: 100%;
+    width: 100%;
+  display: grid;
+  grid-row-start: ${props => (props.rowStart ? props.rowStart : null)};
+  grid-column-start: ${props => (props.colStart ? props.colStart : null)};
   border: 1px solid grey;
+  box-shadow: ${props => props.boxShadow && props.boxShadow};
 `;
