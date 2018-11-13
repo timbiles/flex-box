@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Flex, P, Btn, Input } from '../styles/flex';
 import { Modal, Section, Pre } from '../styles/modal';
 import flex from '../data/flex.json';
+import Loop from './loop';
 
 class properties extends Component {
   state = {
@@ -46,19 +47,6 @@ class properties extends Component {
     );
   };
 
-  pLoop = num => {
-    const { width, height } = this.state;
-    const arr = [];
-    for (let i = 1; i <= num; i++) {
-      arr.push(i);
-    }
-    return arr.map((e, i) => (
-      <P main key={i} width={width && width} height={height}>
-        {e}
-      </P>
-    ));
-  };
-
   handleClose = e => {
     if (e.target.id === 'modal') {
       this.setState({ display: false });
@@ -75,7 +63,6 @@ class properties extends Component {
       number,
       display
     } = this.state;
-    console.log(this.state);
 
     return (
       <>
@@ -155,7 +142,11 @@ class properties extends Component {
             width={wrap && wrap.value === 'nowrap' ? 'auto' : '500px'}
             height={wrap && wrap.value === 'nowrap' ? 'auto' : '500px'}
           >
-            {this.pLoop(number)}
+            <Loop type='flex'
+                number={this.state.number}
+                width={this.state.width}
+                height={this.state.height}
+            />
           </Flex>
         </Container>
       </>

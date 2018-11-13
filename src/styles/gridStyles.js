@@ -8,7 +8,7 @@ export const Grid = styled.div`
 
 export const SideNav = styled.div`
   display: inline-grid;
-  grid-template-rows: 25% 30px 30px;
+  grid-template-rows: 25% repeat(3, 30px);
   grid-template-columns: 0.5fr;
   grid-row-gap: 10px;
 `;
@@ -16,7 +16,8 @@ export const SideNav = styled.div`
 export const Main = styled.div`
   height: 90vh;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: ${props => (props.columns ? props.columns : '1fr 1fr')};
+  grid-template-rows: ${props => (props.rows ? props.rows : '1fr 1fr')};  
   grid-gap: 10px;
 `;
 
