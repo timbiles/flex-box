@@ -41,8 +41,10 @@ export default class Loop extends Component {
           onClick={el => this.props.handleClick(el)}
           rowStart={i === num && rowStart}
           colStart={i === num && colStart}
-          boxShadow={i === num && boxShadow && '1px 1px 5px 3px grey'}
-          onBlur={() => this.setState({ boxShadow: false })}
+          rowEnd={i === num && rowEnd}
+          colEnd={i === num && colEnd}
+          boxShadow={i === num && boxShadow && '1px 1px 5px 3px grey'}          
+        //   onBlur={() => this.setState({ boxShadow: false })}
         >
           {e}
         </Cont>

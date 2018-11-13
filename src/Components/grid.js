@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, SideNav, Main, Container } from '../styles/gridStyles';
+import { Grid, SideNav, Main, Container, Input } from '../styles/gridStyles';
 import { Btn } from '../styles/flex';
 import { Modal, Section, Pre } from '../styles/modal';
 import Loop from './loop';
@@ -17,15 +17,20 @@ class grid extends Component {
     columnGap: '5px',
     rowStart: 1,
     colStart: 1,
+    rowEnd: 2,
+    colEnd: 2,
     num: '',
     boxShadow: false
   };
 
   handleClick = e => {
     console.log('hit');
-    this.setState({ num: +e.target.id, boxShadow: !this.state.boxShadow }, () => {
-      console.log(this.state.num);
-    });
+    this.setState(
+      { num: +e.target.id, boxShadow: !this.state.boxShadow },
+      () => {
+        console.log(this.state.num);
+      }
+    );
   };
 
   edit = value => {
@@ -40,7 +45,7 @@ class grid extends Component {
   };
 
   handleClose = e => {
-      console.log(e.target.id)
+    console.log(e.target.id);
     if (e.target.id === 'modal' || e.target.id === 'modal2') {
       this.setState({ display: false, display2: false });
     }
@@ -73,6 +78,25 @@ class grid extends Component {
     );
   };
 
+  inputs = (e, f, g) => {
+    return (
+      <Container>
+        {e}
+        <Input
+          defaultValue={f}
+          type="number"
+          onChange={e => {
+            this.setState(
+              g.includes('Gap')
+                ? { [g]: e.target.value + 'px' }
+                : { [g]: +e.target.value }
+            );
+          }}
+        />
+      </Container>
+    );
+  };
+
   render() {
     const {
       number,
@@ -84,10 +108,12 @@ class grid extends Component {
       display2,
       rowGap,
       columnGap,
-      rowStart, 
+      rowStart,
       colStart,
       num,
-      boxShadow
+      boxShadow,
+      rowEnd,
+      colEnd
     } = this.state;
     return (
       <>
@@ -104,52 +130,17 @@ class grid extends Component {
             <Container>
               Grid Gap
               <Container>
-                <Container>
-                  Row
-                  <input
-                    defaultValue="5"
-                    type="number"
-                    onChange={e => {
-                      console.log('hit');
-                      this.setState({ rowGap: e.target.value + 'px' });
-                    }}
-                  />
-                </Container>
-                <Container>
-                  Column
-                  <input
-                    defaultValue="5"
-                    type="number"
-                    onChange={e =>
-                      this.setState({ columnGap: e.target.value + 'px' })
-                    }
-                  />
-                </Container>
+                {this.inputs('Row', 5, 'rowGap')}
+                {this.inputs('Column', 5, 'columnGap')}
               </Container>
             </Container>
             <Container>
               Grid Line Numbers
               <Container>
-                <Container>
-                  Row Start
-                  <input
-                    defaultValue="1"
-                    type="number"
-                    onChange={e => {
-                      this.setState({ rowStart: +e.target.value});
-                    }}
-                  />
-                </Container>
-                <Container>
-                  Column Start
-                  <input
-                    defaultValue="1"
-                    type="number"
-                    onChange={e =>
-                      this.setState({ colStart: +e.target.value})
-                    }
-                  />
-                </Container>
+                {this.inputs('Row Start', 1, 'rowStart')}
+                {this.inputs('Row End', 2, 'rowEnd')}                
+                {this.inputs('Column Start', 1, 'colStart')}
+                {this.inputs('Column End', 2, 'colEnd')}                
               </Container>
             </Container>
             <Container primary>
@@ -171,7 +162,7 @@ class grid extends Component {
               id="modal"
               onClick={e => this.handleClose(e)}
             >
-              <Section >
+              <Section>
                 <Pre>{`
 .container {
     display: grid;
@@ -179,6 +170,13 @@ class grid extends Component {
     grid-template-rows: ${rows}
     grid-row-gap: ${rowGap}
     grid-column-gap: ${columnGap}   
+}
+
+.box {
+    grid-row-start: ${rowStart};
+    grid-row-end: ${rowEnd};
+    grid-column-start: ${colStart};
+    grid-column-end: ${colEnd};
 }
                 `}</Pre>
               </Section>
@@ -188,13 +186,19 @@ class grid extends Component {
               id="modal2"
               onClick={e => this.handleClose(e)}
             >
-              <Section >
+              <Section>
                 <Pre>{`
 .container {
     display: grid;
-    grid-template-columns: repeat(${columns.split(' ').length}, ${columns.split(' ')[0]})
+    grid-template-columns: repeat(${columns.split(' ').length}, ${
+                  columns.split(' ')[0]
+                })
     grid-template-rows: (${rows.split(' ').length}, ${rows.split(' ')[0]})
     grid-gap: ${rowGap} ${columnGap}
+}
+
+.box {
+    grid-area: ${rowStart}/${colStart}/${rowEnd}/${colEnd}
 }
                 `}</Pre>
               </Section>
@@ -205,15 +209,19 @@ class grid extends Component {
             rows={rows && rows}
             rowGap={rowGap && rowGap}
             columnGap={columnGap && columnGap}
-            rowStart={ rowStart}
-            colStart={ colStart}
+            rowStart={rowStart}
+            colStart={colStart}
           >
-            <Loop number={number} type="grid" 
-            rowStart={ rowStart}
-            colStart={ colStart}  
-            handleClick={this.handleClick}    
-            num={num} 
-            boxShadow={boxShadow}
+            <Loop
+              number={number}
+              type="grid"
+              rowStart={rowStart}
+              colStart={colStart}
+              rowEnd={rowEnd}
+              colEnd={colEnd}
+              handleClick={this.handleClick}
+              num={num}
+              boxShadow={boxShadow}
             />
           </Main>
         </Grid>
@@ -223,4 +231,3 @@ class grid extends Component {
 }
 
 export default grid;
-

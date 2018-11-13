@@ -33,6 +33,11 @@ export const Container = styled.div`
       grid-template-columns: 1fr repeat(2, 1fr);
       height: max-content;
     `}
+    ${props =>
+    props.secondary &&
+    css`
+    grid-template-columns: 1fr 1fr;
+    `}
 `;
 
 export const Cont = styled.div`
@@ -41,6 +46,20 @@ export const Cont = styled.div`
   display: grid;
   grid-row-start: ${props => (props.rowStart ? props.rowStart : null)};
   grid-column-start: ${props => (props.colStart ? props.colStart : null)};
+  grid-row-end: ${props => (props.rowEnd ? props.rowEnd : null)};
+  grid-column-end: ${props => (props.colEnd ? props.colEnd : null)};  
   border: 1px solid grey;
-  box-shadow: ${props => props.boxShadow && props.boxShadow};
+  font-size: 2em;
+
+${props =>
+    props.boxShadow &&
+    css`
+        box-shadow: ${props.boxShadow};
+        background: #f4f4f4;
+        font-size: 6em;
+    `}
+  
 `;
+
+export const Input = styled.input`
+`
