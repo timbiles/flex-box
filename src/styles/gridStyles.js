@@ -8,7 +8,7 @@ export const Grid = styled.div`
 
 export const SideNav = styled.div`
   display: inline-grid;
-  grid-template-rows: repeat(2, .25fr) 30px 30px;
+  grid-template-rows: repeat(3, .2fr) repeat(3, 30px);
   grid-template-columns: 0.75fr;
   grid-row-gap: 10px;
 `;
@@ -18,7 +18,8 @@ export const Main = styled.div`
   display: grid;
   grid-template-columns: ${props => (props.columns ? props.columns : '1fr 1fr')};
   grid-template-rows: ${props => (props.rows ? props.rows : '1fr 1fr')};  
-  grid-gap: 10px;
+  grid-row-gap: ${props => (props.rowGap ? props.rowGap : '5px')};
+  grid-column-gap: ${props => (props.columnGap ? props.columnGap : '5px')};  
 `;
 
 export const Container = styled.div`
