@@ -24,11 +24,27 @@ class grid extends Component {
   };
 
   handleClick = e => {
-    console.log('hit');
+    const { rows, columns } = this.state;
+    let fr = '1fr ';
+    let temp = +e.target.id + 1;
+    let c = columns.split(' ').length;
+    let r = rows.split(' ').length;
+    let count = 1;
+    while (temp > c) {
+      temp -= c;
+      count++;
+    }
+    console.log('col position', temp);
+    console.log('count', count);
+
     this.setState(
-      { num: +e.target.id, boxShadow: !this.state.boxShadow },
-      () => {
-        console.log(this.state.num);
+      {
+        num: +e.target.id,
+        colStart: temp,
+        rowStart: count,
+        colEnd: temp+1,
+        rowEnd: count +1,
+        boxShadow: !this.state.boxShadow
       }
     );
   };
@@ -83,7 +99,7 @@ class grid extends Component {
       <Container>
         {e}
         <Input
-          defaultValue={f}
+          value={f}
           type="number"
           onChange={e => {
             this.setState(
@@ -137,17 +153,18 @@ class grid extends Component {
             <Container>
               Grid Line Numbers
               <Container>
-                  <Container secondary>
-                {this.inputs('Row Start', 1, 'rowStart')}
-                {this.inputs('Row End', 2, 'rowEnd')}                
-                  </Container>
-                  <Container secondary>
-                {this.inputs('Column Start', 1, 'colStart')}
-                {this.inputs('Column End', 2, 'colEnd')}                
-                  </Container>
+                <Container secondary>
+                  {this.inputs('Row Start', rowStart, 'rowStart')}
+                  {this.inputs('Row End', rowEnd, 'rowEnd')}
+                </Container>
+                <Container secondary>
+                  {this.inputs('Column Start', colStart, 'colStart')}
+                  {this.inputs('Column End', colEnd, 'colEnd')}
+                </Container>
               </Container>
             </Container>
             <Container primary>
+              {number}
               <Btn grid onClick={() => this.setState({ number: number + 1 })}>
                 Add
               </Btn>
