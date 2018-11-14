@@ -24,8 +24,7 @@ class grid extends Component {
   };
 
   handleClick = e => {
-    const { rows, columns } = this.state;
-    let fr = '1fr ';
+    const { rows, columns, boxShadow } = this.state;
     let temp = +e.target.id + 1;
     let c = columns.split(' ').length;
     let r = rows.split(' ').length;
@@ -37,16 +36,19 @@ class grid extends Component {
     console.log('col position', temp);
     console.log('count', count);
 
-    this.setState(
-      {
-        num: +e.target.id,
-        colStart: temp,
-        rowStart: count,
-        colEnd: temp+1,
-        rowEnd: count +1,
-        boxShadow: !this.state.boxShadow
-      }
-    );
+    this.setState({
+      num: +e.target.id,
+      colStart: temp,
+      rowStart: count,
+      colEnd: temp + 1,
+      rowEnd: count + 1,
+      boxShadow: true
+    })
+  };
+
+  handleKey = e => {
+    console.log('hit');
+    console.log(e);
   };
 
   edit = value => {
@@ -95,17 +97,42 @@ class grid extends Component {
   };
 
   inputs = (e, f, g) => {
+    const { rowStart, colStart, rowEnd, colEnd } = this.state;
+    const newVal =
+      g === 'rowEnd' && f < rowStart
+        ? rowStart + 1
+        : g === 'colEnd' && f < colStart
+        ? colStart + 1
+        : f;
     return (
       <Container>
         {e}
         <Input
-          value={f}
+          value={newVal}
           type="number"
           onChange={e => {
+            console.log(this.state[g]);
             this.setState(
               g.includes('Gap')
                 ? { [g]: e.target.value + 'px' }
-                : { [g]: +e.target.value }
+                : +e.target.value > this.state[g] && g === 'rowStart'
+                ? {
+                    [g]: +e.target.value,
+                    rowEnd: rowStart + 1
+                  }
+                  : +e.target.value > this.state[g] && g === 'colStart'
+                ? {
+                    [g]: +e.target.value,
+                    rowEnd: colStart + 1
+                  }
+                : g === 'rowStart' ? {
+                    [g]: +e.target.value,
+                    rowEnd: rowEnd - 1
+                  }
+                  : g === 'colStart' && {
+                    [g]: +e.target.value,
+                    rowEnd: colEnd - 1
+                  }
             );
           }}
         />
@@ -241,6 +268,7 @@ class grid extends Component {
               rowEnd={rowEnd}
               colEnd={colEnd}
               handleClick={this.handleClick}
+              handleKey={this.handleKey}
               num={num}
               boxShadow={boxShadow}
             />

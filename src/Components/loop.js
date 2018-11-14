@@ -3,11 +3,6 @@ import { Cont } from '../styles/gridStyles';
 import { P } from '../styles/flex';
 
 export default class Loop extends Component {
-  state = {
-    num: '',
-    boxShadow: false
-  };
-
   render() {
     const {
       number,
@@ -29,14 +24,15 @@ export default class Loop extends Component {
     return arr.map((e, i) => {
       return this.props.type === 'grid' ? (
         <Cont
+          key={i}
           id={i}
           onClick={el => this.props.handleClick(el)}
           rowStart={i === num && rowStart}
           colStart={i === num && colStart}
           rowEnd={i === num && rowEnd}
           colEnd={i === num && colEnd}
-          boxShadow={i === num && boxShadow && '1px 1px 5px 3px grey'}          
-        //   onBlur={() => this.setState({ boxShadow: false })}
+          boxShadow={i === num && boxShadow && '1px 1px 5px 3px grey'}
+          //   onBlur={() => this.setState({ boxShadow: false })}
         >
           {e}
         </Cont>
