@@ -115,6 +115,7 @@ class grid extends Component {
             this.setState(
               g.includes('Gap')
                 ? { [g]: e.target.value + 'px' }
+                
                 : +e.target.value > this.state[g] && g === 'rowStart'
                 ? {
                     [g]: +e.target.value,
@@ -123,16 +124,17 @@ class grid extends Component {
                   : +e.target.value > this.state[g] && g === 'colStart'
                 ? {
                     [g]: +e.target.value,
-                    rowEnd: colStart + 1
+                    colEnd: colStart + 1
                   }
-                : g === 'rowStart' ? {
+                : g === 'rowStart' && +e.target.value >=1 ? {
                     [g]: +e.target.value,
                     rowEnd: rowEnd - 1
                   }
-                  : g === 'colStart' && {
+                  : g === 'colStart' && +e.target.value >=1 ? {
                     [g]: +e.target.value,
-                    rowEnd: colEnd - 1
+                    colEnd: colEnd - 1
                   }
+                  : null
             );
           }}
         />
