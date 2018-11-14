@@ -137,10 +137,14 @@ class grid extends Component {
             <Container>
               Grid Line Numbers
               <Container>
+                  <Container secondary>
                 {this.inputs('Row Start', 1, 'rowStart')}
                 {this.inputs('Row End', 2, 'rowEnd')}                
+                  </Container>
+                  <Container secondary>
                 {this.inputs('Column Start', 1, 'colStart')}
                 {this.inputs('Column End', 2, 'colEnd')}                
+                  </Container>
               </Container>
             </Container>
             <Container primary>

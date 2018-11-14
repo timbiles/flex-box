@@ -8,13 +8,6 @@ export default class Loop extends Component {
     boxShadow: false
   };
 
-//   handleClick = e => {
-//     console.log('hit');
-//     this.setState({ num: +e.target.id, boxShadow: !this.state.boxShadow }, () => {
-//       console.log(this.state.num);
-//     });
-//   };
-
   render() {
     const {
       number,
@@ -27,7 +20,6 @@ export default class Loop extends Component {
       num,
       boxShadow
     } = this.props;
-    // const { num, boxShadow } = this.state;
 
     const arr = [];
     for (let i = 1; i <= number; i++) {
