@@ -5,7 +5,7 @@ export const Header = styled.div`
   justify-content: center;
   align-items: center;
   height: 10vh;
-  background: #94BFBE;
+  background: #94bfbe;
   font-size: 2em;
 `;
 
@@ -41,14 +41,15 @@ ${props =>
     ${props =>
       props.third &&
       css`
-  justify-content: center;      
+        justify-content: center;
         margin-top: 2%;
       `}
       ${props =>
-      props.fourth && css `
-        flex-direction: row;
-        justify-content: space-around;
-      `}
+        props.fourth &&
+        css`
+          flex-direction: row;
+          justify-content: space-around;
+        `}
 `;
 
 export const Flex = styled.div`
@@ -85,19 +86,21 @@ export const Btn = styled.button`
   width: max-content;
   padding: 1% 3%;
   margin: 0 5%;
-  border-radius: 5px;  
+  border-radius: 5px;
 
   &:hover {
     background: #9cb8b8;
   }
 
   &:focus {
-      outline: none;
+    outline: none;
   }
 
-  ${props=> props.grid && css`
-        margin: 0;
-  `}
+  ${props =>
+    props.grid &&
+    css`
+      margin: 0;
+    `}
 `;
 
 export const Input = styled.input`

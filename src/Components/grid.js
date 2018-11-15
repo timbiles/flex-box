@@ -28,15 +28,15 @@ class grid extends Component {
 
   keyPress = e => {
     const {colStart, colEnd, rowStart, rowEnd, shift} = this.state
-    console.log(e.key)
+    // console.log(e.key)
     
     if(e.key === 'Shift') {
         this.setState({shift: true})
-    } else if(e.key === 'ArrowLeft' && !shift){
+    } else if(e.key === 'ArrowLeft' && !shift && colStart >1){
         this.setState({colStart: colStart -1, colEnd: colEnd -1})
     } else if(e.key === 'ArrowRight' && !shift){
         this.setState({colStart: colStart +1, colEnd: colEnd + 1})
-    } else if(e.key === 'ArrowUp' && !shift){
+    } else if(e.key === 'ArrowUp' && !shift && rowStart >1){
         this.setState({rowStart: rowStart -1, rowEnd: rowEnd - 1})
     } else if(e.key === 'ArrowDown' && !shift){
         this.setState({rowStart: rowStart +1, rowEnd: rowEnd +1})
@@ -52,7 +52,7 @@ class grid extends Component {
         this.setState({rowEnd: rowEnd -1})
     } else if(e.key === 'ArrowUp' && shift && rowEnd <= rowStart+1){
         this.setState({rowStart: rowStart -1})
-    }
+    }   
 }
 
 keyUp = e => {
