@@ -11,13 +11,10 @@ export const Header = styled.div`
 
 export const Container = styled.div`
   display: flex;
-  justify-content: center;
-
   h2 {
         border-bottom: 1px solid #000;
-        padding-bottom: 2%;
-        margin-top: 5%;        
-        margin-bottom: 2%;
+        padding-bottom: 5px;
+        margin: 5px 0; 
         width: max-content;
         align-self: center;
       }
@@ -40,12 +37,19 @@ ${props =>
     css`
       flex-direction: column;
       justify-content: flex-start;
-      text-align: center;
+      /* align-items: flex-start; */
+      /* text-align: center; */
     `}
     ${props =>
       props.third &&
       css`
+  justify-content: center;      
         margin-top: 2%;
+      `}
+      ${props =>
+      props.fourth && css `
+        flex-direction: row;
+        justify-content: space-around;
       `}
 `;
 

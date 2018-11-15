@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom'
 import { Cont } from '../styles/gridStyles';
 import { P } from '../styles/flex';
 
 export default class Loop extends Component {
+
+   
+    
   render() {
     const {
       number,
@@ -27,6 +31,9 @@ export default class Loop extends Component {
           key={i}
           id={i}
           onClick={el => this.props.handleClick(el)}
+          onKeyDown={e => this.props.keyPress(e)}
+          onKeyUp={e=> this.props.keyUp(e)}
+          tabIndex="0"
           rowStart={i === num && rowStart}
           colStart={i === num && colStart}
           rowEnd={i === num && rowEnd}

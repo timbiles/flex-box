@@ -68,15 +68,26 @@ class properties extends Component {
       <>
         <Container main>
           <Container primary>
-            {this.map(direction, 'direction')}
-            {this.map(wrap, 'wrap')}
-            {this.map(justifyContent, 'justifyContent')}
-            {this.map(alignItems, 'alignItems')}
+            <Container fourth>
+              {this.map(direction, 'direction')}
+              {this.map(wrap, 'wrap')}
+            </Container>
+            <Container fourth>
+              {this.map(justifyContent, 'justifyContent')}
+              {this.map(alignItems, 'alignItems')}
+            </Container>
+            <Container fourth>
             {this.map(alignContent, 'alignContent')}
-
+            <Container secondary>
             <h2>Quantity</h2>
             <Container third>
-              <Btn onClick={() => this.setState( number !== 1 ? { number: number - 1 } : null)}>-</Btn>
+              <Btn
+                onClick={() =>
+                  this.setState(number !== 1 ? { number: number - 1 } : null)
+                }
+              >
+                -
+              </Btn>
               {number}
               <Btn
                 onClick={() =>
@@ -94,6 +105,9 @@ class properties extends Component {
                 +
               </Btn>
             </Container>
+            </Container>
+            </Container>
+
             <h2>Size (px)</h2>
             <Container third>
               <P secondary>Width</P>
@@ -109,7 +123,7 @@ class properties extends Component {
                 onChange={e => this.setState({ height: e.target.value + 'px' })}
               />
             </Container>
-            <Container secondary>
+            <Container third>
               <Btn onClick={() => this.setState({ display: !display })}>
                 Get Code
               </Btn>
@@ -142,10 +156,11 @@ class properties extends Component {
             width={wrap && wrap.value === 'nowrap' ? 'auto' : '500px'}
             height={wrap && wrap.value === 'nowrap' ? 'auto' : '500px'}
           >
-            <Loop type='flex'
-                number={this.state.number}
-                width={this.state.width}
-                height={this.state.height}
+            <Loop
+              type="flex"
+              number={this.state.number}
+              width={this.state.width}
+              height={this.state.height}
             />
           </Flex>
         </Container>
