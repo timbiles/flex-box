@@ -58,8 +58,15 @@ ${props =>
         background: #f4f4f4;
         font-size: 6em;
     `}
+
+    &:focus {
+        outline-color: grey;
+    }
   
 `;
 
 export const Input = styled.input`
+`
+export const Text = styled.p`
+    font-size: 1rem;
 `

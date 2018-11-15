@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom'
-import { Cont } from '../styles/gridStyles';
+import { Cont, Text } from '../styles/gridStyles';
 import { P } from '../styles/flex';
 
 export default class Loop extends Component {
@@ -39,9 +38,9 @@ export default class Loop extends Component {
           rowEnd={i === num && rowEnd}
           colEnd={i === num && colEnd}
           boxShadow={i === num && boxShadow && '1px 1px 5px 3px grey'}
-          //   onBlur={() => this.setState({ boxShadow: false })}
         >
           {e}
+          {/* {i === num && <Text>class/className "box"</Text>}  */}
         </Cont>
       ) : (
         <P main key={i} width={width && width} height={height}>
