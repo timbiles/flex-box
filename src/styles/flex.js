@@ -24,9 +24,7 @@ export const Container = styled.div`
 ${props =>
   props.main &&
   css`
-    /* max-height: 88vh; */
     max-width: 98vw;
-    /* background: #fff; */
     border-radius: 0 0 5px 5px;
   `}
   ${props =>
@@ -34,19 +32,19 @@ ${props =>
     css`
       flex-direction: column;
       justify-content: flex-start;
+      background: #f4f4f4;
       flex: 1;
-      margin-top: 1%;
+      padding-top: 1%;
     `}
   ${props =>
     props.secondary &&
     css`
       flex-direction: column;
       justify-content: flex-start;
-    background: #fff;
-    border-radius: 5px;
-    padding: 2%;      
+      background: #fff;
+      border-radius: 5px;
+      padding: 2%;
       margin: 1% 5%;
-      height: max-content;
     `}
     ${props =>
       props.third &&
@@ -73,10 +71,8 @@ export const P = styled.p`
   ${props =>
     props.main &&
     css`
-      /* box-shadow: 4px 4px 9px -4px #000; */
-      /* box-shadow: 0 2px 9px #000; */
-      border: 1.5px solid #878787;
-      background: #f1eee4;
+      box-shadow: 1px 5px 21px -1px #000;
+      background: #f4f4f4;
       padding: 5%;
       width: ${props => props.width};
       height: ${props => props.height};

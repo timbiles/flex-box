@@ -199,16 +199,16 @@ class grid extends Component {
     return (
       <>
         <Grid>
-          <SideNav>
-            <Container>
+          <SideNav >
+            <Container main>
               <h3>Number of Columns</h3>
               {this.buttons(columnCount, 'columnCount', 'columns')}
             </Container>
-            <Container>
+            <Container main>
               <h3>Number of Rows</h3>
               {this.buttons(rowCount, 'rowCount', 'rows')}
             </Container>
-            <Container>
+            <Container main>
              <h3>Grid gap</h3>
               <Container>
                 <Container secondary>
@@ -217,7 +217,7 @@ class grid extends Component {
                 </Container>
               </Container>
             </Container>
-            <Container>
+            <Container main>
               <h3>Grid Line Numbers</h3>
               <Container>
                 <Container secondary>

@@ -15,6 +15,7 @@ export const SideNav = styled.div`
   grid-template-rows: repeat(4, 0.2fr) repeat(3, 30px);
   grid-template-columns: 0.75fr;
   grid-row-gap: 10px;
+  background: #f4f4f4;
 `;
 
 export const Main = styled.div`
@@ -30,6 +31,15 @@ export const Main = styled.div`
 
 export const Container = styled.div`
   display: grid;
+  background: #fff;
+  border-radius: 5px;
+
+  ${props =>
+    props.main &&
+    css`
+      margin: 2%;
+      padding: 2%;
+    `}
 
   ${props =>
     props.primary &&
@@ -37,11 +47,14 @@ export const Container = styled.div`
       justify-items: center;
       grid-template-columns: 1fr repeat(2, 1fr);
       height: max-content;
+      margin: 2%;
+      padding: 2%;
     `}
     ${props =>
       props.secondary &&
       css`
         grid-template-columns: 1fr 1fr;
+        width: max-content;
       `}
     ${props =>
       props.third &&

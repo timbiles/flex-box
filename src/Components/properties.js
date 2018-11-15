@@ -4,6 +4,7 @@ import { Modal, Section, Pre } from '../styles/modal';
 import flex from '../data/flex.json';
 import Loop from './loop';
 
+
 class properties extends Component {
   state = {
     number: 4,

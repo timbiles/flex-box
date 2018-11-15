@@ -26,8 +26,6 @@ export const Exit = keyframes`
 `;
 
 export const Main = styled.div`
-    width: 100%;
-    height: 100%;
     padding: 1vh 1vw;
-    background: #f4f4f4;
+    background: #e1e1e1;
 `
