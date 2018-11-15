@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, SideNav, Main, Container, Input } from '../styles/gridStyles';
+import { Grid, SideNav, Main, Container, P } from '../styles/gridStyles';
 import { Btn } from '../styles/flex';
 import { Modal, Section, Pre } from '../styles/modal';
 import Loop from './loop';
@@ -27,52 +27,49 @@ class grid extends Component {
   };
 
   keyPress = e => {
-    const {colStart, colEnd, rowStart, rowEnd, shift} = this.state
-    // console.log(e.key)
-    
-    if(e.key === 'Shift') {
-        this.setState({shift: true})
-    } else if(e.key === 'ArrowLeft' && !shift && colStart >1){
-        this.setState({colStart: colStart -1, colEnd: colEnd -1})
-    } else if(e.key === 'ArrowRight' && !shift){
-        this.setState({colStart: colStart +1, colEnd: colEnd + 1})
-    } else if(e.key === 'ArrowUp' && !shift && rowStart >1){
-        this.setState({rowStart: rowStart -1, rowEnd: rowEnd - 1})
-    } else if(e.key === 'ArrowDown' && !shift){
-        this.setState({rowStart: rowStart +1, rowEnd: rowEnd +1})
-    } else if(e.key === 'ArrowRight' && shift){
-        this.setState({colEnd: colEnd +1})
-    } else if(e.key === 'ArrowLeft' && shift && colEnd > colStart+1){
-        this.setState({colEnd: colEnd -1})
-    } else if(e.key === 'ArrowLeft' && shift && colEnd <= colStart+1){
-        this.setState({colStart: colStart -1})
-    } else if(e.key === 'ArrowDown' && shift){
-        this.setState({rowEnd: rowEnd +1})
-    } else if(e.key === 'ArrowUp' && shift && rowEnd > rowStart+1){
-        this.setState({rowEnd: rowEnd -1})
-    } else if(e.key === 'ArrowUp' && shift && rowEnd <= rowStart+1){
-        this.setState({rowStart: rowStart -1})
-    }   
-}
+    const { colStart, colEnd, rowStart, rowEnd, shift } = this.state;
 
-keyUp = e => {
-    e.key === 'Shift' && this.setState({shift: false})
-}
+    if (e.key === 'Shift') {
+      this.setState({ shift: true });
+    } else if (e.key === 'ArrowLeft' && !shift && colStart > 1) {
+      this.setState({ colStart: colStart - 1, colEnd: colEnd - 1 });
+    } else if (e.key === 'ArrowRight' && !shift) {
+      this.setState({ colStart: colStart + 1, colEnd: colEnd + 1 });
+    } else if (e.key === 'ArrowUp' && !shift && rowStart > 1) {
+      this.setState({ rowStart: rowStart - 1, rowEnd: rowEnd - 1 });
+    } else if (e.key === 'ArrowDown' && !shift) {
+      this.setState({ rowStart: rowStart + 1, rowEnd: rowEnd + 1 });
+    } else if (e.key === 'ArrowRight' && shift) {
+      this.setState({ colEnd: colEnd + 1 });
+    } else if (e.key === 'ArrowLeft' && shift && colEnd > colStart + 1) {
+      this.setState({ colEnd: colEnd - 1 });
+    } else if (e.key === 'ArrowLeft' && shift && colEnd <= colStart + 1) {
+      this.setState({ colStart: colStart - 1 });
+    } else if (e.key === 'ArrowDown' && shift) {
+      this.setState({ rowEnd: rowEnd + 1 });
+    } else if (e.key === 'ArrowUp' && shift && rowEnd > rowStart + 1) {
+      this.setState({ rowEnd: rowEnd - 1 });
+    } else if (e.key === 'ArrowUp' && shift && rowEnd <= rowStart + 1) {
+      this.setState({ rowStart: rowStart - 1 });
+    }
+  };
+
+  keyUp = e => {
+    e.key === 'Shift' && this.setState({ shift: false });
+  };
 
   handleClick = e => {
     const { columns, num } = this.state;
     let temp = +e.target.id + 1;
     let c = columns.split(' ').length;
     let count = 1;
-    console.log(e.target.id)
-    console.log(this.state.num)
+
     while (temp > c) {
       temp -= c;
       count++;
     }
 
-    if(e.target.id != num) {
-      console.log('hit 1')
+    if (e.target.id != num) {
       this.setState({
         num: +e.target.id,
         colStart: temp,
@@ -80,10 +77,8 @@ keyUp = e => {
         colEnd: temp + 1,
         rowEnd: count + 1,
         boxShadow: true
-      }, () => console.log('hit 2'));
+      });
     }
-    
-
   };
 
   edit = value => {
@@ -97,7 +92,7 @@ keyUp = e => {
     this.setState({ [value]: arr.join(' ') });
   };
 
-handleClose = (e, f, g) => {
+  handleClose = (e, f, g) => {
     if (e.target.id === f) {
       this.setState({ [g]: false });
     }
@@ -140,15 +135,15 @@ handleClose = (e, f, g) => {
         : f;
     return (
       <Container>
-        {e}
+        <P>{e}</P>
         {g.includes('Gap') ? (
-          <Input
+          <input
             defaultValue={newVal}
             type="number"
             onChange={e => this.setState({ [g]: e.target.value + 'px' })}
           />
         ) : (
-          <Input
+          <input
             value={newVal}
             type="number"
             onChange={e => {
@@ -206,22 +201,24 @@ handleClose = (e, f, g) => {
         <Grid>
           <SideNav>
             <Container>
-              Number of Columns
+              <h3>Number of Columns</h3>
               {this.buttons(columnCount, 'columnCount', 'columns')}
             </Container>
             <Container>
-              Number of Rows
+              <h3>Number of Rows</h3>
               {this.buttons(rowCount, 'rowCount', 'rows')}
             </Container>
             <Container>
-              Grid Gap
+             <h3>Grid gap</h3>
               <Container>
-                {this.inputs('Row', 5, 'rowGap')}
-                {this.inputs('Column', 5, 'columnGap')}
+                <Container secondary>
+                  {this.inputs('Row', 5, 'rowGap')}
+                  {this.inputs('Column', 5, 'columnGap')}
+                </Container>
               </Container>
             </Container>
             <Container>
-              Grid Line Numbers
+              <h3>Grid Line Numbers</h3>
               <Container>
                 <Container secondary>
                   {this.inputs('Row Start', rowStart, 'rowStart')}

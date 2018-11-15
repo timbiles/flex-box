@@ -26,9 +26,8 @@ export const Exit = keyframes`
 `;
 
 export const Main = styled.div`
-
-    ${props=> props.animation && css`
-        animation: ${Exit} 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-    `}
-
+    width: 100%;
+    height: 100%;
+    padding: 1vh 1vw;
+    background: #f4f4f4;
 `

@@ -68,15 +68,10 @@ class properties extends Component {
       <>
         <Container main>
           <Container primary>
-            <Container fourth>
               {this.map(direction, 'direction')}
               {this.map(wrap, 'wrap')}
-            </Container>
-            <Container fourth>
               {this.map(justifyContent, 'justifyContent')}
               {this.map(alignItems, 'alignItems')}
-            </Container>
-            <Container fourth>
             {this.map(alignContent, 'alignContent')}
             <Container secondary>
             <h2>Quantity</h2>
@@ -104,7 +99,6 @@ class properties extends Component {
               >
                 +
               </Btn>
-            </Container>
             </Container>
             </Container>
 

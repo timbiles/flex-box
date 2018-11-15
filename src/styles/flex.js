@@ -5,8 +5,10 @@ export const Header = styled.div`
   justify-content: center;
   align-items: center;
   height: 10vh;
+  width: 98vw;
   background: #94bfbe;
   font-size: 2em;
+  border-radius: 5px 5px 0 0;
 `;
 
 export const Container = styled.div`
@@ -22,7 +24,10 @@ export const Container = styled.div`
 ${props =>
   props.main &&
   css`
-    min-height: 90vh;
+    /* max-height: 88vh; */
+    max-width: 98vw;
+    /* background: #fff; */
+    border-radius: 0 0 5px 5px;
   `}
   ${props =>
     props.primary &&
@@ -30,13 +35,18 @@ ${props =>
       flex-direction: column;
       justify-content: flex-start;
       flex: 1;
-      border-right: 1px solid grey;
+      margin-top: 1%;
     `}
   ${props =>
     props.secondary &&
     css`
       flex-direction: column;
       justify-content: flex-start;
+    background: #fff;
+    border-radius: 5px;
+    padding: 2%;      
+      margin: 1% 5%;
+      height: max-content;
     `}
     ${props =>
       props.third &&
@@ -44,17 +54,12 @@ ${props =>
         justify-content: center;
         margin-top: 2%;
       `}
-      ${props =>
-        props.fourth &&
-        css`
-          flex-direction: row;
-          justify-content: space-around;
-        `}
 `;
 
 export const Flex = styled.div`
   display: flex;
   flex: 3;
+  background: #fff;
   flex-direction: ${props => props.direction};
   flex-wrap: ${props => props.wrap};
   justify-content: ${props => props.justifyContent};
@@ -68,8 +73,10 @@ export const P = styled.p`
   ${props =>
     props.main &&
     css`
-      box-shadow: 2px 4px 9px -1px #000;
-      background: #f4f4f4;
+      /* box-shadow: 4px 4px 9px -4px #000; */
+      /* box-shadow: 0 2px 9px #000; */
+      border: 1.5px solid #878787;
+      background: #f1eee4;
       padding: 5%;
       width: ${props => props.width};
       height: ${props => props.height};

@@ -7,6 +7,10 @@
   text-align: center;
 }
 
+*::selection {
+  background: #B2675E;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -23,5 +27,5 @@
 }
 
 .color {
-  color: #555555;
+  color: #f1eee4;
 }

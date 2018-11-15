@@ -1,8 +1,12 @@
 import styled, { css, keyframes } from 'styled-components';
 
 export const Grid = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 3fr;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  width: 98vw;
+  max-height: 88vh;
+  background: #fff;
+  border-radius: 0 0 5px 5px;    
 }
 `;
 
@@ -14,7 +18,8 @@ export const SideNav = styled.div`
 `;
 
 export const Main = styled.div`
-  height: 90vh;
+  height: 88vh;
+  max-width: 73.35vw;
   display: grid;
   grid-template-columns: ${props =>
     props.columns ? props.columns : '1fr 1fr'};
@@ -42,13 +47,13 @@ export const Container = styled.div`
       props.third &&
       css`
         position: absolute;
-        bottom: 2%;
-        right: 2%;
+        bottom: 10px;
+        right: 10px;
         padding: 2%;
         background: #fff;
         border-radius: 5px;
         grid-template-columns: 1fr 1fr;
-        animation: ${Entrance} .8s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+        animation: ${Entrance} 0.8s cubic-bezier(0.39, 0.575, 0.565, 1) both;
       `}
 `;
 
@@ -92,18 +97,44 @@ export const Cont = styled.div`
   }
 `;
 
-export const Input = styled.input``;
-export const Text = styled.p`
-  font-size: 1rem;
+export const P = styled.p`
+  color: #282828;
+  font-weight: 400;
 `;
 
-export const Entrance = keyframes`
+export const Text = styled.code`
+  position: absolute;
+  right: 40px;
+  bottom: 200px;
+  font-size: 1rem;
+  overflow: hidden;
+  border-right: 0.15em solid orange;
+  white-space: nowrap;
+  margin: 0 auto;
+  ${props =>
+    props.type &&
+    css`
+      animation: ${Typing} 2.5s steps(40, end), ${Blink} 0.75s step-end infinite;
+    `}
+`;
+
+const Entrance = keyframes`
 0% {
-    transform: translateX(-20px) translateY(-20px);
+    transform: translate(-15px, -15px);
     opacity: 0;
     }
     100% {
-    transform: translateX(0) translateY(0);
+    transform: translate(0);
     opacity: 1;
     }
+`;
+
+const Typing = keyframes`
+  from { width: 0 }
+  to { width: 500px }
+`;
+
+const Blink = keyframes`
+from, to { border-color: transparent }
+50% { border-color: orange; }
 `;
