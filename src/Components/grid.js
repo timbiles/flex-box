@@ -60,24 +60,30 @@ keyUp = e => {
 }
 
   handleClick = e => {
-    const { columns } = this.state;
+    const { columns, num } = this.state;
     let temp = +e.target.id + 1;
     let c = columns.split(' ').length;
     let count = 1;
-
+    console.log(e.target.id)
+    console.log(this.state.num)
     while (temp > c) {
       temp -= c;
       count++;
     }
 
-    this.setState({
-      num: +e.target.id,
-      colStart: temp,
-      rowStart: count,
-      colEnd: temp + 1,
-      rowEnd: count + 1,
-      boxShadow: true
-    });
+    if(e.target.id != num) {
+      console.log('hit 1')
+      this.setState({
+        num: +e.target.id,
+        colStart: temp,
+        rowStart: count,
+        colEnd: temp + 1,
+        rowEnd: count + 1,
+        boxShadow: true
+      }, () => console.log('hit 2'));
+    }
+    
+
   };
 
   edit = value => {
