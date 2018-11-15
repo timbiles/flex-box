@@ -3,6 +3,7 @@ import { Grid, SideNav, Main, Container, Input } from '../styles/gridStyles';
 import { Btn } from '../styles/flex';
 import { Modal, Section, Pre } from '../styles/modal';
 import Loop from './loop';
+import Arrows from './arrows';
 
 class grid extends Component {
   state = {
@@ -11,6 +12,7 @@ class grid extends Component {
     rowCount: 2,
     display: false,
     display2: false,
+    arrowDisplay: true,
     rows: '1fr 1fr',
     columns: '1fr 1fr',
     rowGap: '5px',
@@ -58,7 +60,7 @@ keyUp = e => {
 }
 
   handleClick = e => {
-    const { rows, columns, boxShadow } = this.state;
+    const { columns } = this.state;
     let temp = +e.target.id + 1;
     let c = columns.split(' ').length;
     let count = 1;
@@ -89,10 +91,9 @@ keyUp = e => {
     this.setState({ [value]: arr.join(' ') });
   };
 
-  handleClose = e => {
-    console.log(e.target.id);
-    if (e.target.id === 'modal' || e.target.id === 'modal2') {
-      this.setState({ display: false, display2: false });
+handleClose = (e, f, g) => {
+    if (e.target.id === f) {
+      this.setState({ [g]: false });
     }
   };
 
@@ -184,6 +185,7 @@ keyUp = e => {
       rowCount,
       display,
       display2,
+      arrowDisplay,
       rowGap,
       columnGap,
       rowStart,
@@ -243,7 +245,7 @@ keyUp = e => {
             <Modal
               display={display ? 'block' : 'none'}
               id="modal"
-              onClick={e => this.handleClose(e)}
+              onClick={e => this.handleClose(e, 'modal', 'display')}
             >
               <Section>
                 <Pre>{`
@@ -267,7 +269,7 @@ keyUp = e => {
             <Modal
               display={display2 ? 'block' : 'none'}
               id="modal2"
-              onClick={e => this.handleClose(e)}
+              onClick={e => this.handleClose(e, 'modal2', 'display2')}
             >
               <Section>
                 <Pre>{`
@@ -309,6 +311,11 @@ keyUp = e => {
               keyUp={this.keyUp}
             />
           </Main>
+          <Arrows
+            display={arrowDisplay}
+            id="arrowModal"
+            handleClose={this.handleClose}
+          />
         </Grid>
       </>
     );

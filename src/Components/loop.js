@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import { Cont, Text } from '../styles/gridStyles';
+import { Cont } from '../styles/gridStyles';
 import { P } from '../styles/flex';
 
-export default class Loop extends Component {
-
-   
-    
+export default class Loop extends Component { 
   render() {
     const {
       number,
@@ -40,7 +37,6 @@ export default class Loop extends Component {
           boxShadow={i === num && boxShadow && '1px 1px 5px 3px grey'}
         >
           {e}
-          {/* {i === num && <Text>class/className "box"</Text>}  */}
         </Cont>
       ) : (
         <P main key={i} width={width && width} height={height}>
