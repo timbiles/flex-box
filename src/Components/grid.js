@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, SideNav, Main, Container, P } from '../styles/gridStyles';
-import { Btn } from '../styles/flex';
+import { Btn, Pa, Styles } from '../styles/flex';
 import { Modal, Section, Pre } from '../styles/modal';
 import Loop from './loop';
 import Arrows from './arrows';
@@ -199,7 +199,10 @@ class grid extends Component {
     return (
       <>
         <Grid>
+          
           <SideNav >
+            <Styles height='52vh'>
+          <Pa title>Properties</Pa>            
             <Container main>
               <h3>Number of Columns</h3>
               {this.buttons(columnCount, 'columnCount', 'columns')}
@@ -230,7 +233,9 @@ class grid extends Component {
                 </Container>
               </Container>
             </Container>
-           
+          </Styles>                        
+           <Container main>
+
             <h3>Quantity</h3>
             <Container primary>
             
@@ -243,10 +248,12 @@ class grid extends Component {
               </Btn>
               
             </Container>
-            <Btn onClick={() => this.setState({ display: !display })}>
+           </Container>
+
+            <Btn code onClick={() => this.setState({ display: !display })}>
               Get Code
             </Btn>
-            <Btn onClick={() => this.setState({ display2: !display2 })}>
+            <Btn code onClick={() => this.setState({ display2: !display2 })}>
               Get Optimized Code
             </Btn>
             <Modal
@@ -319,7 +326,7 @@ class grid extends Component {
             />
           </Main>
           <Arrows
-            display={arrowDisplay}
+            display={arrowDisplay ? 'block' : 'none'}
             id="arrowModal"
             handleClose={this.handleClose}
           />

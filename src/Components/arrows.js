@@ -6,10 +6,10 @@ const arrows = props => {
   return (
     <Modal
       id={props.id}
-      display={props.display ? 'block' : 'none'}
+      display={props.display}
       onClick={e => props.handleClose(e, 'arrowModal', 'arrowDisplay')}
     >
-      <Text type>
+      <Text main>
           Click on a box to move it around with the arrow keys!
       </Text>
       <Container third>

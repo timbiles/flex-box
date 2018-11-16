@@ -8,6 +8,7 @@ export const Modal = styled.div`
   width: 100%;
   height: 100%;
   background: rgba(171, 171, 171, 0.6);
+  z-index: 1;
 `;
 
 export const Section = styled.div`

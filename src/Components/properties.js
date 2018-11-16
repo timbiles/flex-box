@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Flex, P, Btn, Input, Styles } from '../styles/flex';
+import { Container, Flex, Pa, Btn, Input, Styles } from '../styles/flex';
 import { Modal, Section, Pre } from '../styles/modal';
 import flex from '../data/flex.json';
 import Loop from './loop';
@@ -68,8 +68,8 @@ class properties extends Component {
       <>
         <Container main>
           <Container primary>
-            <Styles>
-              <P title>Properties</P>
+            <Styles height='40vh'>         
+              <Pa title>Properties</Pa>
               {this.map(direction, 'direction')}
               {this.map(wrap, 'wrap')}
               {this.map(justifyContent, 'justifyContent')}
@@ -108,7 +108,7 @@ class properties extends Component {
             <Container secondary>
               <h2>Size (px)</h2>
               <Container third>
-                <P secondary>Width</P>
+                <Pa secondary>Width</Pa>
                 <input
                   type="number"
                   onChange={e =>
@@ -117,7 +117,7 @@ class properties extends Component {
                 />
               </Container>
               <Container third>
-                <P secondary>Height</P>
+                <Pa secondary>Height</Pa>
                 <input
                   type="number"
                   onChange={e =>

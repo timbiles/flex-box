@@ -6,16 +6,16 @@ export const Grid = styled.div`
   width: 98vw;
   max-height: 88vh;
   background: #fff;
-  border-radius: 0 0 5px 5px;    
-}
+  border-radius: 0 0 5px 5px;
 `;
 
 export const SideNav = styled.div`
   display: inline-grid;
-  grid-template-rows: repeat(4, 0.2fr) repeat(3, 30px);
-  grid-template-columns: 0.75fr;
+  grid-template-rows: repeat(6, 0.2fr) repeat(3, 30px);
   grid-row-gap: 10px;
   background: #f4f4f4;
+  height: 88vh;
+  overflow: scroll;
 `;
 
 export const Main = styled.div`
@@ -46,14 +46,13 @@ export const Container = styled.div`
   h3::first-letter {
     font-size: 1.3em;
     font-weight: 400;
-    padding-right: 1%;
   }
 
   ${props =>
     props.main &&
     css`
-      margin: 2%;
-      padding: 2%;
+      margin: 2% 5% ;
+      padding: 2%;      
     `}
 
   ${props =>
@@ -120,7 +119,7 @@ export const Cont = styled.div`
       font-size: 6em;
     `}
 
-    &:focus {
+  &:focus {
     outline-color: grey;
   }
 `;
@@ -140,7 +139,7 @@ export const Text = styled.code`
   white-space: nowrap;
   margin: 0 auto;
   ${props =>
-    props.type &&
+    props.main &&
     css`
       animation: ${Typing} 2.5s steps(40, end), ${Blink} 0.75s step-end infinite;
     `}

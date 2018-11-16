@@ -59,12 +59,13 @@ ${props =>
 `;
 
 export const Styles = styled.div`
-  &:not(:hover) {
-    height: 40vh;
+ &:not(:hover) {
+    height: ${props => props.height};
     overflow: hidden;
     border-radius: 0 0 5px 5px;
     position: relative;
-  }
+    border-bottom: 2.5px solid rgba(191, 191, 191, .4);
+  } 
 
   &:after {
     content: '';
@@ -78,8 +79,8 @@ export const Styles = styled.div`
       rgba(255, 255, 255, 0),
       rgba(255, 255, 255, 1) 90%
     );
-    width: 90%;
-    height: 4em;
+    width: 100%;
+    height: 10em;
   }
   &:hover:after {
     z-index: -1;
@@ -100,7 +101,7 @@ export const Flex = styled.div`
   height: ${props => props.height};
 `;
 
-export const P = styled.p`
+export const Pa = styled.p`
   ${props =>
     props.main &&
     css`

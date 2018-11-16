@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Cont } from '../styles/gridStyles';
-import { P } from '../styles/flex';
+import { Pa } from '../styles/flex';
 
 export default class Loop extends Component { 
   render() {
@@ -39,9 +39,9 @@ export default class Loop extends Component {
           {e}
         </Cont>
       ) : (
-        <P main key={i} width={width && width} height={height}>
+        <Pa main key={i} width={width && width} height={height}>
           {e}
-        </P>
+        </Pa>
       );
     });
   }
