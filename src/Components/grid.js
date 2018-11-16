@@ -101,16 +101,6 @@ class grid extends Component {
   buttons = (e, f, g) => {
     return (
       <Container primary>
-        {e}
-        <Btn
-          onClick={() => {
-            this.setState({ [f]: e + 1 }, () => {
-              this.edit(g);
-            });
-          }}
-        >
-          Up
-        </Btn>
         <Btn
           onClick={() => {
             e > 1 &&
@@ -120,6 +110,16 @@ class grid extends Component {
           }}
         >
           Down
+        </Btn>
+        {e}
+        <Btn
+          onClick={() => {
+            this.setState({ [f]: e + 1 }, () => {
+              this.edit(g);
+            });
+          }}
+        >
+          Up
         </Btn>
       </Container>
     );
@@ -201,7 +201,7 @@ class grid extends Component {
         <Grid>
           
           <SideNav >
-            <Styles height='52vh'>
+            <Styles height='52vh'>                 
           <Pa title>Properties</Pa>            
             <Container main>
               <h3>Number of Columns</h3>

@@ -8,38 +8,36 @@ import './App.scss';
 
 class App extends Component {
   state = {
-    flex: false,
+    flex: true,
     title: 'Flex Box Playground'
   };
   render() {
     const { flex, title } = this.state;
     return (
       <Main>
-        <Header>{title}</Header>
-        {flex ? (
-          <>
+        <Header>
+          {title}
+          {flex ? (
             <Arrow
               primary
               onClick={() =>
                 this.setState({ flex: !flex, title: 'Grid Playground' })
               }
-            >
-              >
-            </Arrow>
-            <Properties />
-          </>
-        ) : (
-          <>
+            />
+          ) : (
             <Arrow
+              rotate='rotateY(180deg)'
               secondary
               onClick={() =>
                 this.setState({ flex: !flex, title: 'Flex Box Playground' })
               }
-            >
-              {`<`}
-            </Arrow>
+            />
+          )}
+        </Header>
+        {flex ? (
+            <Properties />
+        ) : (
             <Grid />
-          </>
         )}
       </Main>
     );

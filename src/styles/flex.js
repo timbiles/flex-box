@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 export const Header = styled.div`
   display: flex;
@@ -8,7 +8,9 @@ export const Header = styled.div`
   width: 98vw;
   background: #94bfbe;
   font-size: 2em;
-  border-radius: 5px 5px 0 0;
+  /* border-radius: 5px 5px 0 0; */
+  border-radius: 5px;
+  margin-bottom: 1vh;
 `;
 
 export const Container = styled.div`
@@ -26,8 +28,7 @@ ${props =>
   props.main &&
   css`
     max-width: 98vw;
-    height: 88vh;
-    border-radius: 0 0 5px 5px;
+    height: 87vh;
   `}
   ${props =>
     props.primary &&
@@ -38,6 +39,7 @@ ${props =>
       flex: 1;
       padding-top: 1%;
       overflow: scroll;
+    border-radius: 5px 0 0 5px;      
     `}
   ${props =>
     props.secondary &&
@@ -59,13 +61,13 @@ ${props =>
 `;
 
 export const Styles = styled.div`
- &:not(:hover) {
+  &:not(:hover) {
     height: ${props => props.height};
     overflow: hidden;
     border-radius: 0 0 5px 5px;
     position: relative;
-    border-bottom: 2.5px solid rgba(191, 191, 191, .4);
-  } 
+    border-bottom: 2.5px solid rgba(191, 191, 191, 0.4);
+  }
 
   &:after {
     content: '';
@@ -99,6 +101,7 @@ export const Flex = styled.div`
   align-content: ${props => props.alignContent};
   width: ${props => props.width};
   height: ${props => props.height};
+  border-radius: 0 5px 5px 0;  
 `;
 
 export const Pa = styled.p`
@@ -122,9 +125,9 @@ export const Pa = styled.p`
         font-size: 2em;
         text-align: center;
 
-        &::first-letter { 
-    font-size: 2.05em;
-}
+        &::first-letter {
+          font-size: 2.05em;
+        }
       `}
 `;
 
@@ -146,10 +149,10 @@ export const Btn = styled.button`
   ${props =>
     props.grid &&
     css`
-      margin: 0;
+      padding: 5%;
     `}
 
-    ${props =>
+  ${props =>
     props.code &&
     css`
       font-size: 1.3em;

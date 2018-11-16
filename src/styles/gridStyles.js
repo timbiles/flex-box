@@ -4,9 +4,9 @@ export const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 3fr;
   width: 98vw;
-  max-height: 88vh;
+  max-height: 87vh;
   background: #fff;
-  border-radius: 0 0 5px 5px;
+  border-radius: 5px;
 `;
 
 export const SideNav = styled.div`
@@ -14,19 +14,23 @@ export const SideNav = styled.div`
   grid-template-rows: repeat(6, 0.2fr) repeat(3, 30px);
   grid-row-gap: 10px;
   background: #f4f4f4;
-  height: 88vh;
+  height: 87vh;
   overflow: scroll;
+  border-radius: 5px 0 0 5px;  
 `;
 
 export const Main = styled.div`
-  height: 88vh;
+  height: 87vh;
+  max-height: 85vh;
   max-width: 73.35vw;
+  padding: .5%;
   display: grid;
   grid-template-columns: ${props =>
     props.columns ? props.columns : '1fr 1fr'};
   grid-template-rows: ${props => (props.rows ? props.rows : '1fr 1fr')};
   grid-row-gap: ${props => (props.rowGap ? props.rowGap : '5px')};
   grid-column-gap: ${props => (props.columnGap ? props.columnGap : '5px')};
+  border-radius: 0 5px 5px 0;    
 `;
 
 export const Container = styled.div`
@@ -48,6 +52,15 @@ export const Container = styled.div`
     font-weight: 400;
   }
 
+  input {
+    height: 2em;
+    font-size: 1em;
+  }
+
+  input:focus {
+    outline: none;
+  }
+
   ${props =>
     props.main &&
     css`
@@ -59,16 +72,16 @@ export const Container = styled.div`
     props.primary &&
     css`
       justify-items: center;
-      grid-template-columns: 1fr repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       height: max-content;
-      margin: 2%;
+      margin: 2% 10%;
       padding: 2%;
     `}
     ${props =>
       props.secondary &&
       css`
         grid-template-columns: 1fr 1fr;
-        width: max-content;
+        width: 100%;
       `}
     ${props =>
       props.third &&
@@ -109,6 +122,7 @@ export const Cont = styled.div`
   grid-row-end: ${props => (props.rowEnd ? props.rowEnd : null)};
   grid-column-end: ${props => (props.colEnd ? props.colEnd : null)};
   border: 1px solid grey;
+  /* border-radius: 5px; */
   font-size: 2em;
 
   ${props =>
