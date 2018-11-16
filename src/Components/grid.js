@@ -230,14 +230,18 @@ class grid extends Component {
                 </Container>
               </Container>
             </Container>
+           
+            <h3>Quantity</h3>
             <Container primary>
-              {number}
-              <Btn grid onClick={() => this.setState({ number: number + 1 })}>
-                Add
-              </Btn>
+            
               <Btn grid onClick={() => this.setState({ number: number - 1 })}>
-                Remove
+                -
               </Btn>
+              {number}              
+              <Btn grid onClick={() => this.setState({ number: number + 1 })}>
+                +
+              </Btn>
+              
             </Container>
             <Btn onClick={() => this.setState({ display: !display })}>
               Get Code

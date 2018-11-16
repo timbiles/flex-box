@@ -19,12 +19,14 @@ export const Container = styled.div`
         margin: 5px 0; 
         width: max-content;
         align-self: center;
+        font-weight: 300;
       }
 
 ${props =>
   props.main &&
   css`
     max-width: 98vw;
+    height: 88vh;
     border-radius: 0 0 5px 5px;
   `}
   ${props =>
@@ -35,6 +37,7 @@ ${props =>
       background: #f4f4f4;
       flex: 1;
       padding-top: 1%;
+      overflow: scroll;
     `}
   ${props =>
     props.secondary &&
@@ -45,6 +48,7 @@ ${props =>
       border-radius: 5px;
       padding: 2%;
       margin: 1% 5%;
+      flex-shrink: 0;
     `}
     ${props =>
       props.third &&
@@ -54,10 +58,39 @@ ${props =>
       `}
 `;
 
+export const Styles = styled.div`
+  &:not(:hover) {
+    height: 40vh;
+    overflow: hidden;
+    border-radius: 0 0 5px 5px;
+    position: relative;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 1) 90%
+    );
+    width: 90%;
+    height: 4em;
+  }
+  &:hover:after {
+    z-index: -1;
+  }
+`;
+
 export const Flex = styled.div`
   display: flex;
   flex: 3;
   background: #fff;
+  padding: 10px;
   flex-direction: ${props => props.direction};
   flex-wrap: ${props => props.wrap};
   justify-content: ${props => props.justifyContent};
@@ -78,10 +111,20 @@ export const P = styled.p`
       height: ${props => props.height};
     `}
     ${props =>
-    props.secondary &&
-    css`
-      margin-right: 5%;
-    `}
+      props.secondary &&
+      css`
+        margin-right: 5%;
+      `}
+    ${props =>
+      props.title &&
+      css`
+        font-size: 2em;
+        text-align: center;
+
+        &::first-letter { 
+    font-size: 2.05em;
+}
+      `}
 `;
 
 export const Btn = styled.button`
@@ -103,6 +146,14 @@ export const Btn = styled.button`
     props.grid &&
     css`
       margin: 0;
+    `}
+
+    ${props =>
+    props.code &&
+    css`
+      font-size: 1.3em;
+      background: #df3e7b;
+      color: #fff;
     `}
 `;
 

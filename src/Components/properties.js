@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Container, Flex, P, Btn, Input } from '../styles/flex';
+import { Container, Flex, P, Btn, Input, Styles } from '../styles/flex';
 import { Modal, Section, Pre } from '../styles/modal';
 import flex from '../data/flex.json';
 import Loop from './loop';
-
 
 class properties extends Component {
   state = {
@@ -69,59 +68,71 @@ class properties extends Component {
       <>
         <Container main>
           <Container primary>
+            <Styles>
+              <P title>Properties</P>
               {this.map(direction, 'direction')}
               {this.map(wrap, 'wrap')}
               {this.map(justifyContent, 'justifyContent')}
               {this.map(alignItems, 'alignItems')}
-            {this.map(alignContent, 'alignContent')}
+              {this.map(alignContent, 'alignContent')}
+            </Styles>
+
             <Container secondary>
-            <h2>Quantity</h2>
-            <Container third>
-              <Btn
-                onClick={() =>
-                  this.setState(number !== 1 ? { number: number - 1 } : null)
-                }
-              >
-                -
-              </Btn>
-              {number}
-              <Btn
-                onClick={() =>
-                  this.setState(
-                    wrap.value === 'nowrap' && number < 8
-                      ? { number: number + 1 }
-                      : wrap.value === 'nowrap' && number > 8
-                      ? { number: 8 }
-                      : wrap.value !== 'nowrap'
-                      ? { number: number + 1 }
-                      : null
-                  )
-                }
-              >
-                +
-              </Btn>
+              <h2>Quantity</h2>
+              <Container third>
+                <Btn
+                  onClick={() =>
+                    this.setState(number !== 1 ? { number: number - 1 } : null)
+                  }
+                >
+                  -
+                </Btn>
+                {number}
+                <Btn
+                  onClick={() =>
+                    this.setState(
+                      wrap.value === 'nowrap' && number < 8
+                        ? { number: number + 1 }
+                        : wrap.value === 'nowrap' && number > 8
+                        ? { number: 8 }
+                        : wrap.value !== 'nowrap'
+                        ? { number: number + 1 }
+                        : null
+                    )
+                  }
+                >
+                  +
+                </Btn>
+              </Container>
             </Container>
+            <Container secondary>
+              <h2>Size (px)</h2>
+              <Container third>
+                <P secondary>Width</P>
+                <input
+                  type="number"
+                  onChange={e =>
+                    this.setState({ width: e.target.value + 'px' })
+                  }
+                />
+              </Container>
+              <Container third>
+                <P secondary>Height</P>
+                <input
+                  type="number"
+                  onChange={e =>
+                    this.setState({ height: e.target.value + 'px' })
+                  }
+                />
+              </Container>
             </Container>
 
-            <h2>Size (px)</h2>
-            <Container third>
-              <P secondary>Width</P>
-              <input
-                type="number"
-                onChange={e => this.setState({ width: e.target.value + 'px' })}
-              />
-            </Container>
-            <Container third>
-              <P secondary>Height</P>
-              <input
-                type="number"
-                onChange={e => this.setState({ height: e.target.value + 'px' })}
-              />
-            </Container>
-            <Container third>
-              <Btn onClick={() => this.setState({ display: !display })}>
-                Get Code
-              </Btn>
+            <Container secondary>
+              <Container third>
+                <Btn code onClick={() => this.setState({ display: !display })}>
+                  Get Code
+                </Btn>
+              </Container>
               <Modal
                 display={display ? 'block' : 'none'}
                 id="modal"
@@ -149,7 +160,7 @@ class properties extends Component {
             alignItems={alignItems && alignItems.value}
             alignContent={alignContent && alignContent.value}
             width={wrap && wrap.value === 'nowrap' ? 'auto' : '500px'}
-            height={wrap && wrap.value === 'nowrap' ? 'auto' : '500px'}
+            height={wrap && wrap.value === 'nowrap' ? 'auto' : '85vh'}
           >
             <Loop
               type="flex"

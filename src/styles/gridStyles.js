@@ -34,6 +34,21 @@ export const Container = styled.div`
   background: #fff;
   border-radius: 5px;
 
+  h3 {
+    border-bottom: 1px solid #000;
+        padding-bottom: 5px;
+        margin: 5px 0; 
+        width: max-content;
+        align-self: center;
+        font-weight: 300;
+  }
+
+  h3::first-letter {
+    font-size: 1.3em;
+    font-weight: 400;
+    padding-right: 1%;
+  }
+
   ${props =>
     props.main &&
     css`

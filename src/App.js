@@ -8,7 +8,7 @@ import './App.scss';
 
 class App extends Component {
   state = {
-    flex: true,
+    flex: false,
     title: 'Flex Box Playground'
   };
   render() {
