@@ -8,7 +8,6 @@ export const Header = styled.div`
   width: 98vw;
   background: #94bfbe;
   font-size: 2em;
-  /* border-radius: 5px 5px 0 0; */
   border-radius: 5px;
   margin-bottom: 1vh;
 `;
@@ -167,5 +166,15 @@ export const Input = styled.input`
   }
   &:checked {
     background: #40e0d0;
+  }
+`;
+
+export const Icon = styled.svg`
+  height: 30px;
+  cursor: pointer;
+
+  &:hover {
+    fill: #94bfbe;
+    transition: 0.7s;
   }
 `;
