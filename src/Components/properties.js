@@ -69,7 +69,7 @@ class properties extends Component {
         <Container main>
           <Container primary>
             <Styles height='40vh'>      
-              <Pa title>Properties</Pa>
+              <Pa header>Properties</Pa>
               {this.map(direction, 'direction')}
               {this.map(wrap, 'wrap')}
               {this.map(justifyContent, 'justifyContent')}

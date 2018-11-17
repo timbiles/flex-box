@@ -66,7 +66,9 @@ export const Styles = styled.div`
     border-radius: 0 0 5px 5px;
     position: relative;
     border-bottom: 2.5px solid rgba(191, 191, 191, 0.4);
+    padding: 1%;
   }
+  padding: 1%;
 
   &:after {
     content: '';
@@ -119,7 +121,7 @@ export const Pa = styled.p`
         margin-right: 5%;
       `}
     ${props =>
-      props.title &&
+      props.header &&
       css`
         font-size: 2em;
         text-align: center;

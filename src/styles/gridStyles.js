@@ -16,22 +16,27 @@ export const SideNav = styled.div`
   background: #f4f4f4;
   height: 87vh;
   overflow: scroll;
-  border-radius: 5px 0 0 5px;  
+  border-radius: 5px 0 0 5px;
+  padding: 0 2%;
 `;
 
 export const Main = styled.div`
   height: 87vh;
   max-height: 85vh;
   max-width: 73.35vw;
-  padding: .5%;
+  padding: 0.5%;
   display: grid;
   grid-template-columns: ${props =>
     props.columns ? props.columns : '1fr 1fr'};
   grid-template-rows: ${props => (props.rows ? props.rows : '1fr 1fr')};
   grid-row-gap: ${props => (props.rowGap ? props.rowGap : '5px')};
   grid-column-gap: ${props => (props.columnGap ? props.columnGap : '5px')};
-  border-radius: 0 5px 5px 0;    
+  border-radius: 0 5px 5px 0;
 `;
+
+export const Input = styled.input`
+    width: 90%;
+`
 
 export const Container = styled.div`
   display: grid;
@@ -53,7 +58,7 @@ export const Container = styled.div`
   }
 
   input {
-    height: 2em;
+    height: 1.4em;
     font-size: 1em;
   }
 
@@ -64,8 +69,8 @@ export const Container = styled.div`
   ${props =>
     props.main &&
     css`
-      margin: 2% 5% ;
-      padding: 2%;      
+      margin: 2% 0;
+      padding: 2%;
     `}
 
   ${props =>

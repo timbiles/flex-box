@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, SideNav, Main, Container, P } from '../styles/gridStyles';
+import { Grid, SideNav, Main, Container, P, Input } from '../styles/gridStyles';
 import { Btn, Pa, Styles, Icon } from '../styles/flex';
 import { Modal, Section, Pre } from '../styles/modal';
 import Loop from './loop';
@@ -127,6 +127,7 @@ class grid extends Component {
 
   inputs = (e, f, g) => {
     const { rowStart, colStart, rowEnd, colEnd } = this.state;
+    console.log(g, f)
     const newVal =
       g === 'rowEnd' && f < rowStart
         ? rowStart + 1
@@ -134,16 +135,16 @@ class grid extends Component {
         ? colStart + 1
         : f;
     return (
-      <Container>
+      <Container >
         <P>{e}</P>
         {g.includes('Gap') ? (
-          <input
+          <Input
             defaultValue={newVal}
             type="number"
             onChange={e => this.setState({ [g]: e.target.value + 'px' })}
           />
         ) : (
-          <input
+          <Input
             value={newVal}
             type="number"
             onChange={e => {
@@ -202,7 +203,7 @@ class grid extends Component {
           
           <SideNav >
             <Styles height='52vh'>                 
-          <Pa title>Properties</Pa>            
+          <Pa header>Properties</Pa>            
             <Container main>
               <h3>Number of Columns</h3>
               {this.buttons(columnCount, 'columnCount', 'columns')}
