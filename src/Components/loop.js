@@ -16,6 +16,7 @@ export default class Loop extends Component {
       boxShadow,
       padding
     } = this.props;
+    console.log(this.props)
 
     const arr = [];
     for (let i = 1; i <= number; i++) {
@@ -40,7 +41,7 @@ export default class Loop extends Component {
           {e}
         </Cont>
       ) : (
-        <Pa main key={i} width={width && width} height={height} padding={padding}>
+        <Pa main key={i} width={width && width} height={ height} padding={padding}>
           {e}
         </Pa>
       );

@@ -57,6 +57,12 @@ ${props =>
         justify-content: center;
         margin-top: 2%;
       `}
+
+      @media (max-width: 1160px) {
+        input {
+          width: 50%;
+        }
+      }
 `;
 
 export const Styles = styled.div`
@@ -111,8 +117,8 @@ export const Pa = styled.p`
     css`
       box-shadow: 1px 5px 21px -1px #000;
       background: #f4f4f4;
-  padding: ${props => props.padding};
-      width: ${props => props.width};
+      padding: ${props => props.padding || 'auto'};
+      width: ${props => props.width || 'auto'};
       height: ${props => props.height};
     `}
     ${props =>

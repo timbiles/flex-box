@@ -98,6 +98,7 @@ class properties extends Component {
   };
 
   render() {
+    console.log(this.state)
     const {
       direction,
       wrap,
@@ -114,7 +115,6 @@ class properties extends Component {
       heightUnit, 
       paddingUnit
     } = this.state;
-    console.log(this.state)
 
     return (
       <>
@@ -205,7 +205,7 @@ class properties extends Component {
             alignItems={alignItems && alignItems.value}
             alignContent={alignContent && alignContent.value}
             width={wrap && wrap.value === 'nowrap' ? 'auto' : '50vw'}
-            height={wrap && wrap.value === 'nowrap' ? '85vh' : '50vh'}
+            height={wrap && wrap.value === 'nowrap' ? 'auto' : '50vh'}
           >
             <Loop
               type="flex"
