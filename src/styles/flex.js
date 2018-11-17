@@ -111,7 +111,7 @@ export const Pa = styled.p`
     css`
       box-shadow: 1px 5px 21px -1px #000;
       background: #f4f4f4;
-      padding: 5%;
+  padding: ${props => props.padding};
       width: ${props => props.width};
       height: ${props => props.height};
     `}
@@ -170,6 +170,10 @@ export const Input = styled.input`
     background: #40e0d0;
   }
 `;
+
+export const A = styled.a`
+  width: max-content;
+`
 
 export const Icon = styled.svg`
   height: 30px;
