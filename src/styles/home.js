@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 
 export const Arrow = styled.div`
   position: fixed;
@@ -11,9 +11,21 @@ export const Arrow = styled.div`
   transform: ${props => props.rotate};
   background: white;
   cursor: pointer;
+  background-size: 200%;
+  transition: background-position 1s;
+
+  ${props => props.primary && css`
+    background-image: linear-gradient(to right, white 50%, #83aaa8 50%);    
+  `}
+
+  ${props => props.secondary && css`
+    background-image: linear-gradient(to left, #83aaa8 50%, white 50%);  
+  `}
+
   &:hover {
-    transform: scale(1.05) ${props => props.rotate};    
-  }
+    transform: scale(1.05) ${props => props.rotate};   
+    background-position: -100% 0;
+  }  
 
   &:active {
     transform: scale(.98) ${props => props.rotate};    

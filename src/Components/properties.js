@@ -63,7 +63,8 @@ class properties extends Component {
     return (
       <Container third>
         <Pa secondary>{str.charAt(0).toUpperCase() + str.slice(1)}</Pa>
-        <input
+        <Input
+          secondary
           type="number"
           placeholder={str === 'padding' ? padding : 'auto'}
           onChange={e => this.setState({ [str]: e.target.value + measure })}
@@ -98,7 +99,6 @@ class properties extends Component {
   };
 
   render() {
-    console.log(this.state)
     const {
       direction,
       wrap,
@@ -107,7 +107,6 @@ class properties extends Component {
       alignContent,
       number,
       display,
-      measure,
       width,
       height,
       padding,

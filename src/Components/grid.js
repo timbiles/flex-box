@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Grid, SideNav, Main, Container, P, Input } from '../styles/gridStyles';
-import { Btn, Pa, Styles, Icon } from '../styles/flex';
+import { Btn, Pa, Styles } from '../styles/flex';
 import { Modal, Section, Pre } from '../styles/modal';
 import Loop from './loop';
 import Arrows from './arrows';
-import Icons from './icon';
+import Icon from './icon';
 
 class grid extends Component {
   state = {
@@ -13,7 +13,6 @@ class grid extends Component {
     rowCount: 2,
     display: false,
     display2: false,
-    arrowDisplay: true,
     rows: '1fr 1fr',
     columns: '1fr 1fr',
     rowGap: '5px',
@@ -70,7 +69,7 @@ class grid extends Component {
       count++;
     }
 
-    if (e.target.id != num) {
+    if (+e.target.id !== num) {
       this.setState({
         num: +e.target.id,
         colStart: temp,
@@ -128,7 +127,6 @@ class grid extends Component {
 
   inputs = (e, f, g) => {
     const { rowStart, colStart, rowEnd, colEnd } = this.state;
-    console.log(g, f)
     const newVal =
       g === 'rowEnd' && f < rowStart
         ? rowStart + 1
@@ -188,7 +186,6 @@ class grid extends Component {
       rowCount,
       display,
       display2,
-      arrowDisplay,
       rowGap,
       columnGap,
       rowStart,
@@ -258,7 +255,7 @@ class grid extends Component {
             <Btn code onClick={() => this.setState({ display2: !display2 })}>
               Get Optimized Code
             </Btn>
-            <Icons/>
+            <Icon/>
             <Modal
               display={display ? 'block' : 'none'}
               id="modal"
@@ -329,9 +326,9 @@ class grid extends Component {
             />
           </Main>
           <Arrows
-            display={arrowDisplay ? 'block' : 'none'}
+            display={this.props.arrowDisplay ? 'block' : 'none'}
             id="arrowModal"
-            handleClose={this.handleClose}
+            handleClose={this.props.handleClose}
           />
         </Grid>
       </>

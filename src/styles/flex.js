@@ -1,6 +1,7 @@
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Header = styled.div`
+  font-family: 'Hind', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,7 +39,7 @@ ${props =>
       flex: 1;
       padding-top: 1%;
       overflow: scroll;
-    border-radius: 5px 0 0 5px;      
+      border-radius: 5px 0 0 5px;
     `}
   ${props =>
     props.secondary &&
@@ -57,12 +58,6 @@ ${props =>
         justify-content: center;
         margin-top: 2%;
       `}
-
-      @media (max-width: 1160px) {
-        input {
-          width: 50%;
-        }
-      }
 `;
 
 export const Styles = styled.div`
@@ -108,7 +103,7 @@ export const Flex = styled.div`
   align-content: ${props => props.alignContent};
   width: ${props => props.width};
   height: ${props => props.height};
-  border-radius: 0 5px 5px 0;  
+  border-radius: 0 5px 5px 0;
 `;
 
 export const Pa = styled.p`
@@ -169,17 +164,23 @@ export const Btn = styled.button`
 `;
 
 export const Input = styled.input`
+/* width: inherit !important; */
   &:hover {
     background: #9faab7;
   }
   &:checked {
     background: #40e0d0;
   }
+  ${props =>
+    props.secondary &&
+    css`
+      width: 50%;
+    `}
 `;
 
 export const A = styled.a`
   width: max-content;
-`
+`;
 
 export const Icon = styled.svg`
   height: 30px;

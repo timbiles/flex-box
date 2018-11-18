@@ -45,11 +45,12 @@ export const Container = styled.div`
 
   h3 {
     border-bottom: 1px solid #000;
-        padding-bottom: 5px;
-        margin: 5px 0; 
-        width: max-content;
-        align-self: center;
-        font-weight: 300;
+    margin: 5px 0; 
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    width: max-content;
+    justify-self: center;
+    font-weight: 300;
   }
 
   h3::first-letter {
@@ -126,8 +127,7 @@ export const Cont = styled.div`
   grid-column-start: ${props => (props.colStart ? props.colStart : null)};
   grid-row-end: ${props => (props.rowEnd ? props.rowEnd : null)};
   grid-column-end: ${props => (props.colEnd ? props.colEnd : null)};
-  border: 1px solid grey;
-  /* border-radius: 5px; */
+  border: 1px dotted grey;
   font-size: 2em;
 
   ${props =>

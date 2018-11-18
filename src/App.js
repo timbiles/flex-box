@@ -9,7 +9,14 @@ import './App.scss';
 class App extends Component {
   state = {
     flex: true,
+    arrowDisplay: true,
     title: 'Flex Box Playground'
+  };
+
+  handleClose = (e, f, g) => {
+    if (e.target.id === f) {
+      this.setState({ [g]: false });
+    }
   };
   render() {
     const { flex, title } = this.state;
@@ -37,7 +44,10 @@ class App extends Component {
         {flex ? (
             <Properties />
         ) : (
-            <Grid />
+            <Grid
+              arrowDisplay={this.state.arrowDisplay}
+              handleClose={this.handleClose}
+            />
         )}
       </Main>
     );

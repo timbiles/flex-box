@@ -25,3 +25,13 @@
 .App-link {
   color: #61dafb;
 }
+
+input:focus,
+select:focus  {
+  outline: none;
+}
+
+
+.color {
+  // color: #83aaa8
+}

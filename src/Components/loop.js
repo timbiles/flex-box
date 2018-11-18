@@ -16,7 +16,6 @@ export default class Loop extends Component {
       boxShadow,
       padding
     } = this.props;
-    console.log(this.props)
 
     const arr = [];
     for (let i = 1; i <= number; i++) {
