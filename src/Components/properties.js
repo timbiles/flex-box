@@ -22,10 +22,16 @@ class properties extends Component {
   changeState = (e, val, name) => {
     this.setState({ [name]: { ...val, value: e.target.value } }, () => {
       this.state.wrap.value === 'nowrap' &&
-        this.state.number > 8 &&
+        this.state.number > 8 ?
         this.setState({
           number: 8
-        });
+        })
+        : this.state.direction.value === 'column' ?
+        this.setState({padding: '3%'}) 
+        : this.state.direction.value === 'column-reverse' ?        
+        this.setState({padding: '3%'}) 
+        : this.setState({padding: '5%'})
+
     });
   };
 

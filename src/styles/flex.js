@@ -164,10 +164,6 @@ export const Btn = styled.button`
 `;
 
 export const Input = styled.input`
-/* width: inherit !important; */
-  &:hover {
-    background: #9faab7;
-  }
   &:checked {
     background: #40e0d0;
   }
