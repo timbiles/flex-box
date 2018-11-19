@@ -139,10 +139,12 @@ export const Pa = styled.p`
 
 export const Btn = styled.button`
   cursor: pointer;
-  width: max-content;
+  /* width: max-content; */
+  width: ${props => props.width};
   padding: 1% 3%;
   margin: 0 5%;
   border-radius: 5px;
+  background: ${props => props.color};
 
   &:hover {
     background: #9cb8b8;
@@ -162,7 +164,7 @@ export const Btn = styled.button`
     props.code &&
     css`
       font-size: 1.3em;
-      background: #df3e7b;
+      background: #8DA7BE;
       color: #fff;
     `}
 `;

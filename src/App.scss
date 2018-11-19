@@ -11,6 +11,10 @@
   background: #e05a8e;
 }
 
+select {
+  height: 2em;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -35,3 +39,4 @@ select:focus  {
 .color {
   color: #709192;
 }
+

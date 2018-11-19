@@ -11,7 +11,7 @@ class properties extends Component {
     display: false,
     widthUnit: 'px',
     heightUnit: 'px',
-    paddingUnit: '%',    
+    paddingUnit: '%',
     padding: '5%'
   };
 
@@ -21,17 +21,15 @@ class properties extends Component {
 
   changeState = (e, val, name) => {
     this.setState({ [name]: { ...val, value: e.target.value } }, () => {
-      this.state.wrap.value === 'nowrap' &&
-        this.state.number > 8 ?
-        this.setState({
-          number: 8
-        })
-        : this.state.direction.value === 'column' ?
-        this.setState({padding: '3%'}) 
-        : this.state.direction.value === 'column-reverse' ?        
-        this.setState({padding: '3%'}) 
-        : this.setState({padding: '5%'})
-
+      this.state.wrap.value === 'nowrap' && this.state.number > 8
+        ? this.setState({
+            number: 8
+          })
+        : this.state.direction.value === 'column'
+        ? this.setState({ padding: '3%' })
+        : this.state.direction.value === 'column-reverse'
+        ? this.setState({ padding: '3%' })
+        : this.setState({ padding: '5%' });
     });
   };
 
@@ -42,7 +40,7 @@ class properties extends Component {
         {val &&
           val.arr.map((e, i) => {
             return (
-              <Container key={i}>
+              <Container key={i} >
                 <Input
                   name={name}
                   type="radio"
@@ -65,9 +63,9 @@ class properties extends Component {
   };
 
   changeSize = (unit, str, measure) => {
-    const {padding} = this.state
+    const { padding } = this.state;
     return (
-      <Container third>
+      <Container third >
         <Pa secondary>{str.charAt(0).toUpperCase() + str.slice(1)}</Pa>
         <Input
           secondary
@@ -84,21 +82,21 @@ class properties extends Component {
             })
           }
         >
-          {str === 'padding' ? 
-          <>
-          <option value="%">%</option>
-          <option value="px">px</option>
-          <option value="em">em</option>
-          <option value="cm">cm</option>
-          </>  
-          : 
-          <>
-          <option value="px">px</option>
-          <option value="em">em</option>
-          <option value="%">%</option>
-          <option value="cm">cm</option>
-          </> 
-        }
+          {str === 'padding' ? (
+            <>
+              <option value="%">%</option>
+              <option value="px">px</option>
+              <option value="em">em</option>
+              <option value="cm">cm</option>
+            </>
+          ) : (
+            <>
+              <option value="px">px</option>
+              <option value="em">em</option>
+              <option value="%">%</option>
+              <option value="cm">cm</option>
+            </>
+          )}
         </select>
       </Container>
     );
@@ -117,7 +115,7 @@ class properties extends Component {
       height,
       padding,
       widthUnit,
-      heightUnit, 
+      heightUnit,
       paddingUnit
     } = this.state;
 
@@ -138,6 +136,8 @@ class properties extends Component {
               <h2>Quantity</h2>
               <Container third>
                 <Btn
+                  color="#EFC7C2"
+                  width="max-content"
                   onClick={() =>
                     this.setState(number !== 1 ? { number: number - 1 } : null)
                   }
@@ -146,6 +146,8 @@ class properties extends Component {
                 </Btn>
                 {number}
                 <Btn
+                  color="#96BE8C"
+                  width="max-content"
                   onClick={() =>
                     this.setState(
                       wrap.value === 'nowrap' && number < 8
@@ -165,8 +167,8 @@ class properties extends Component {
             <Container secondary>
               <h2> Box Size</h2>
               {this.changeSize(width, 'width', widthUnit)}
-              {this.changeSize(height, 'height', heightUnit)}  
-              {this.changeSize(padding, 'padding', paddingUnit)}                                        
+              {this.changeSize(height, 'height', heightUnit)}
+              {this.changeSize(padding, 'padding', paddingUnit)}
             </Container>
 
             <Container secondary>
@@ -175,8 +177,8 @@ class properties extends Component {
                   Get Code
                 </Btn>
               </Container>
-              
-              <Icon/>
+
+              <Icon />
               <Modal
                 display={display ? 'block' : 'none'}
                 id="modal"
@@ -194,8 +196,8 @@ class properties extends Component {
 }
 
 .box {
-    height: ${ width || 'auto'}
-    width: ${ height || 'auto'}
+    height: ${width || 'auto'}
+    width: ${height || 'auto'}
     padding: ${padding}
 }
                 `}</Pre>

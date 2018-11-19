@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
-import { Grid, SideNav, Main, Container, P, Input, Counter } from '../styles/gridStyles';
+import {
+  Grid,
+  SideNav,
+  Main,
+  Container,
+  P,
+  Input,
+  Counter
+} from '../styles/gridStyles';
 import { Btn, Pa, Styles } from '../styles/flex';
 import { Modal, Section, Pre } from '../styles/modal';
 import Loop from './loop';
@@ -26,7 +34,7 @@ class grid extends Component {
     boxShadow: false,
     shift: false,
     dots: false,
-    dots2: false,    
+    dots2: false
   };
 
   keyPress = e => {
@@ -84,19 +92,17 @@ class grid extends Component {
     }
   };
 
-  edit = (value, str) => {  
+  edit = (value, str) => {
     let arr = [];
     let temp;
     if (str === 'sub') {
-      temp = this.state[value].split(' ')
-      temp.splice(-1)
-      this.setState({[value]: temp.join(' ')})
+      temp = this.state[value].split(' ');
+      temp.splice(-1);
+      this.setState({ [value]: temp.join(' ') });
     } else {
-      arr = [...[this.state[value]], '1fr'].join(' ')
+      arr = [...[this.state[value]], '1fr'].join(' ');
       this.setState({ [value]: arr });
     }
-
-    
   };
 
   handleClose = (e, f, g) => {
@@ -109,6 +115,8 @@ class grid extends Component {
     return (
       <Container primary>
         <Btn
+          color="#EFC7C2"
+          width='50%'
           onClick={() => {
             e > 1 &&
               this.setState({ [f]: e - 1 }, () => {
@@ -120,6 +128,8 @@ class grid extends Component {
         </Btn>
         {e}
         <Btn
+          color="#96BE8C"
+          width='50%'          
           onClick={() => {
             this.setState({ [f]: e + 1 }, () => {
               this.edit(g);
@@ -189,31 +199,40 @@ class grid extends Component {
     let num;
     let unit = 'fr';
 
-    return c.map((e,i) => {
+    return c.map((e, i) => {
       return (
         <Counter key={i}>
-          <p>{title} {i+1}</p>
-          <input type="number" value={c[i].replace(/\D/g, '')} onChange={e => {
-            num = e.target.value + c[i].replace(/[0-9]/g, '') || unit
-            c[i] = num
-            this.setState({[str]: c.join(' ')})
-          }}/>
-          <select name={title} onChange={e => {
-            unit = e.target.value
-            num = c[i].replace(/\D/g, '') + unit
-            c[i] = num
-            this.setState({[str]: c.join(' ')})
-          }}>
+          <p>
+            {title} {i + 1}
+          </p>
+          <input
+            type="number"
+            value={c[i].replace(/\D/g, '')}
+            onChange={e => {
+              num = e.target.value + c[i].replace(/[0-9]/g, '') || unit;
+              c[i] = num;
+              this.setState({ [str]: c.join(' ') });
+            }}
+          />
+          <select
+            name={title}
+            onChange={e => {
+              unit = e.target.value;
+              num = c[i].replace(/\D/g, '') + unit;
+              c[i] = num;
+              this.setState({ [str]: c.join(' ') });
+            }}
+          >
             <option value="fr">fr</option>
             <option value="%">%</option>
             <option value="px">px</option>
             <option value="em">em</option>
             <option value="cm">cm</option>
-            <option value="auto">auto</option>          
+            <option value="auto">auto</option>
           </select>
         </Counter>
       );
-    })
+    });
   };
 
   render() {
@@ -237,20 +256,21 @@ class grid extends Component {
       dots2
     } = this.state;
 
-    const find = (str) => {
-      let arr = str.split(' ')
+    const find = str => {
+      let arr = str.split(' ');
 
       for (let i = 0; i < arr.length - 1; i++) {
         let count = 1;
-          while (arr[i] === arr[i + 1]) {
-            count ++
-           arr.splice(i, 1)
-          }
-          count === 1 ? arr[i] = arr[i] :
-          arr.splice(i, 1, `repeat(${count}, ${arr[i]})`)
+        while (arr[i] === arr[i + 1]) {
+          count++;
+          arr.splice(i, 1);
+        }
+        count === 1
+          ? (arr[i] = arr[i])
+          : arr.splice(i, 1, `repeat(${count}, ${arr[i]})`);
       }
-      return arr.join(' ')
-      }
+      return arr.join(' ');
+    };
 
     return (
       <>
@@ -262,13 +282,13 @@ class grid extends Component {
                 <h3>Number of Columns ↔</h3>
                 {this.buttons(columnCount, 'columnCount', 'columns')}
                 {dots && this.loop(columns, 'Column', 'columns')}
-                <Dots hit={() => this.setState({dots: !dots})} />
+                <Dots hit={() => this.setState({ dots: !dots })} />
               </Container>
               <Container main>
                 <h3>Number of Rows ↕</h3>
                 {this.buttons(rowCount, 'rowCount', 'rows')}
                 {dots2 && this.loop(rows, 'Row', 'rows')}
-                <Dots hit={() => this.setState({dots2: !dots2})} />
+                <Dots hit={() => this.setState({ dots2: !dots2 })} />
               </Container>
               <Container main>
                 <h3>Grid gap</h3>

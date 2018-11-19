@@ -171,9 +171,6 @@ export const Counter = styled.div`
   grid-template-columns: 80px 100px 0.25fr;
   border-radius: 5px;
   align-items: center;
-  select {
-    height: 2em;
-  }
 `;
 
 
