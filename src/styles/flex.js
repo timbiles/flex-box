@@ -115,6 +115,7 @@ export const Pa = styled.p`
       padding: ${props => props.padding || 'auto'};
       width: ${props => props.width || 'auto'};
       height: ${props => props.height};
+      overflow-y: auto;
     `}
     ${props =>
       props.secondary &&

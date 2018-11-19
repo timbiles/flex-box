@@ -203,11 +203,11 @@ class grid extends Component {
             <Styles height='52vh'>                 
           <Pa header>Properties</Pa>            
             <Container main>
-              <h3>Number of Columns</h3>
+              <h3>Number of Columns ↔</h3>
               {this.buttons(columnCount, 'columnCount', 'columns')}
             </Container>
             <Container main>
-              <h3>Number of Rows</h3>
+              <h3>Number of Rows ↕</h3>
               {this.buttons(rowCount, 'rowCount', 'rows')}
             </Container>
             <Container main>

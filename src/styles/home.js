@@ -32,7 +32,7 @@ export const Arrow = styled.div`
   }
 `;
 
-export const Exit = keyframes`
+const Exit = keyframes`
  0% {
     -webkit-transform: translateX(0);
     transform: translateX(0);
