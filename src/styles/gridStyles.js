@@ -35,8 +35,8 @@ export const Main = styled.div`
 `;
 
 export const Input = styled.input`
-    width: 90%;
-`
+  width: 90%;
+`;
 
 export const Container = styled.div`
   display: grid;
@@ -70,7 +70,7 @@ export const Container = styled.div`
   ${props =>
     props.main &&
     css`
-    position: relative;
+      position: relative;
       margin: 2% 0;
       padding: 2%;
     `}
@@ -165,15 +165,18 @@ export const Text = styled.code`
     `}
 `;
 
+
 export const Counter = styled.div`
   display: grid;
-  grid-template-columns: 80px 100px .25fr;
+  grid-template-columns: 80px 100px 0.25fr;
   border-radius: 5px;
   align-items: center;
   select {
     height: 2em;
   }
 `;
+
+
 
 const Entrance = keyframes`
 0% {

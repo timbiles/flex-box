@@ -84,15 +84,25 @@ class grid extends Component {
     }
   };
 
-  edit = value => {
+  edit = (value, str) => {
     const { columnCount, rowCount } = this.state;
     let arr = [];
+    let temp;
     let e = value === 'columns' ? columnCount : rowCount;
 
-    for (let i = 1; i <= e; i++) {
-      arr.push('1fr');
+    // for (let i = 1; i <= e; i++) {
+    //   arr.push('1fr');
+    // }
+    if (str === 'sub') {
+      temp = this.state[value].split(' ')
+      temp.splice(-1)
+      this.setState({[value]: temp.join(' ')})
+    } else {
+      arr = [...[this.state[value]], '1fr'].join(' ')
+      this.setState({ [value]: arr });
     }
-    this.setState({ [value]: arr.join(' ') });
+
+    
   };
 
   handleClose = (e, f, g) => {
@@ -108,11 +118,11 @@ class grid extends Component {
           onClick={() => {
             e > 1 &&
               this.setState({ [f]: e - 1 }, () => {
-                this.edit(g);
+                this.edit(g, 'sub');
               });
           }}
         >
-          Down
+          -
         </Btn>
         {e}
         <Btn
@@ -122,7 +132,7 @@ class grid extends Component {
             });
           }}
         >
-          Up
+          +
         </Btn>
       </Container>
     );
