@@ -84,15 +84,9 @@ class grid extends Component {
     }
   };
 
-  edit = (value, str) => {
-    const { columnCount, rowCount } = this.state;
+  edit = (value, str) => {  
     let arr = [];
     let temp;
-    let e = value === 'columns' ? columnCount : rowCount;
-
-    // for (let i = 1; i <= e; i++) {
-    //   arr.push('1fr');
-    // }
     if (str === 'sub') {
       temp = this.state[value].split(' ')
       temp.splice(-1)
@@ -192,20 +186,15 @@ class grid extends Component {
 
   loop = (state, title, str) => {
     const c = state.split(' ');
-    let arr = [];
-    for(let i=0; i< c.length; i++){
-      arr.push(i)
-    }
-
     let num;
     let unit = 'fr';
 
-    return arr.map((e,i) => {
+    return c.map((e,i) => {
       return (
         <Counter key={i}>
           <p>{title} {i+1}</p>
           <input type="number" value={c[i].replace(/\D/g, '')} onChange={e => {
-            num = e.target.value + unit
+            num = e.target.value + c[i].replace(/[0-9]/g, '') || unit
             c[i] = num
             this.setState({[str]: c.join(' ')})
           }}/>
