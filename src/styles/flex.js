@@ -7,7 +7,9 @@ export const Header = styled.div`
   align-items: center;
   height: 10vh;
   width: 98vw;
-  background: #94bfbe;
+  background: linear-gradient(to right, #94bfbe, #709192);
+  /* background: #94bfbe; */
+  /* 668586 */
   font-size: 2em;
   border-radius: 5px;
   margin-bottom: 1vh;
@@ -61,7 +63,7 @@ ${props =>
 `;
 
 export const Styles = styled.div`
-  /* &:not(:hover) {
+  &:not(:hover) {
     height: ${props => props.height};
     overflow: hidden;
     border-radius: 0 0 5px 5px;
@@ -88,7 +90,7 @@ export const Styles = styled.div`
   }
   &:hover:after {
     z-index: -1;
-  } */
+  }
 `;
 
 export const Flex = styled.div`
@@ -112,6 +114,7 @@ export const Pa = styled.p`
     css`
       box-shadow: 1px 5px 21px -1px #000;
       background: #f4f4f4;
+      border: 1px double rgba(146, 189, 189, .5);
       padding: ${props => props.padding || 'auto'};
       width: ${props => props.width || 'auto'};
       height: ${props => props.height};

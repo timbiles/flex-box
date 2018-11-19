@@ -128,7 +128,7 @@ export const Cont = styled.div`
   grid-column-start: ${props => (props.colStart ? props.colStart : null)};
   grid-row-end: ${props => (props.rowEnd ? props.rowEnd : null)};
   grid-column-end: ${props => (props.colEnd ? props.colEnd : null)};
-  border: 1px dotted grey;
+  border: 1px dotted rgba(146, 189, 189, .5);
   font-size: 2em;
 
   ${props =>

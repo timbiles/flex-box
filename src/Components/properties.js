@@ -125,7 +125,7 @@ class properties extends Component {
       <>
         <Container main>
           <Container primary>
-            <Styles height="40vh">
+            <Styles height="50vh">
               <Pa header>Properties</Pa>
               {this.map(direction, 'direction')}
               {this.map(wrap, 'wrap')}
