@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Grid, SideNav, Main, Container, P, Input } from '../styles/gridStyles';
+import { Grid, SideNav, Main, Container, P, Input, Counter } from '../styles/gridStyles';
 import { Btn, Pa, Styles } from '../styles/flex';
 import { Modal, Section, Pre } from '../styles/modal';
 import Loop from './loop';
 import Arrows from './arrows';
 import Icon from './icon';
+import Dots from './dots';
 
 class grid extends Component {
   state = {
@@ -23,7 +24,9 @@ class grid extends Component {
     colEnd: 2,
     num: '',
     boxShadow: false,
-    shift: false
+    shift: false,
+    dots: false,
+    dots2: false,    
   };
 
   keyPress = e => {
@@ -134,7 +137,7 @@ class grid extends Component {
         ? colStart + 1
         : f;
     return (
-      <Container >
+      <Container>
         <P>{e}</P>
         {g.includes('Gap') ? (
           <Input
@@ -177,6 +180,43 @@ class grid extends Component {
     );
   };
 
+  loop = (state, title, str) => {
+    const c = state.split(' ');
+    let arr = [];
+    for(let i=0; i< c.length; i++){
+      arr.push(i)
+    }
+
+    let num;
+    let unit = 'fr';
+
+    return arr.map((e,i) => {
+      return (
+        <Counter key={i}>
+          <p>{title} {i+1}</p>
+          <input type="number" value={c[i].replace(/\D/g, '')} onChange={e => {
+            num = e.target.value + unit
+            c[i] = num
+            this.setState({[str]: c.join(' ')})
+          }}/>
+          <select name={title} onChange={e => {
+            unit = e.target.value
+            num = c[i].replace(/\D/g, '') + unit
+            c[i] = num
+            this.setState({[str]: c.join(' ')})
+          }}>
+            <option value="fr">fr</option>
+            <option value="%">%</option>
+            <option value="px">px</option>
+            <option value="em">em</option>
+            <option value="cm">cm</option>
+            <option value="auto">auto</option>          
+          </select>
+        </Counter>
+      );
+    })
+  };
+
   render() {
     const {
       number,
@@ -193,61 +233,79 @@ class grid extends Component {
       num,
       boxShadow,
       rowEnd,
-      colEnd
+      colEnd,
+      dots,
+      dots2
     } = this.state;
+
+    const find = (str) => {
+      let arr = str.split(' ')
+
+      for (let i = 0; i < arr.length - 1; i++) {
+        let count = 1;
+          while (arr[i] === arr[i + 1]) {
+            count ++
+           arr.splice(i, 1)
+          }
+          count === 1 ? arr[i] = arr[i] :
+          arr.splice(i, 1, `repeat(${count}, ${arr[i]})`)
+      }
+      return arr.join(' ')
+      }
+
     return (
       <>
         <Grid>
-          
-          <SideNav >
-            <Styles height='52vh'>                 
-          <Pa header>Properties</Pa>            
-            <Container main>
-              <h3>Number of Columns ↔</h3>
-              {this.buttons(columnCount, 'columnCount', 'columns')}
-            </Container>
-            <Container main>
-              <h3>Number of Rows ↕</h3>
-              {this.buttons(rowCount, 'rowCount', 'rows')}
-            </Container>
-            <Container main>
-             <h3>Grid gap</h3>
-              <Container>
-                <Container secondary>
-                  {this.inputs('Row', 5, 'rowGap')}
-                  {this.inputs('Column', 5, 'columnGap')}
+          <SideNav>
+            <Styles height="52vh">
+              <Pa header>Properties</Pa>
+              <Container main>
+                <h3>Number of Columns ↔</h3>
+                {this.buttons(columnCount, 'columnCount', 'columns')}
+                {dots && this.loop(columns, 'Column', 'columns')}
+                <Dots hit={() => this.setState({dots: !dots})} />
+              </Container>
+              <Container main>
+                <h3>Number of Rows ↕</h3>
+                {this.buttons(rowCount, 'rowCount', 'rows')}
+                {dots2 && this.loop(rows, 'Row', 'rows')}
+                <Dots hit={() => this.setState({dots2: !dots2})} />
+              </Container>
+              <Container main>
+                <h3>Grid gap</h3>
+                <Container>
+                  <Container secondary>
+                    {this.inputs('Row', 5, 'rowGap')}
+                    {this.inputs('Column', 5, 'columnGap')}
+                  </Container>
                 </Container>
               </Container>
-            </Container>
-            <Container main>
-              <h3>Grid Line Numbers</h3>
-              <Container>
-                <Container secondary>
-                  {this.inputs('Row Start', rowStart, 'rowStart')}
-                  {this.inputs('Row End', rowEnd, 'rowEnd')}
-                </Container>
-                <Container secondary>
-                  {this.inputs('Column Start', colStart, 'colStart')}
-                  {this.inputs('Column End', colEnd, 'colEnd')}
+              <Container main>
+                <h3>Grid Line Numbers</h3>
+                <Container>
+                  <Container secondary>
+                    {this.inputs('Row Start', rowStart, 'rowStart')}
+                    {this.inputs('Row End', rowEnd, 'rowEnd')}
+                  </Container>
+                  <Container secondary>
+                    {this.inputs('Column Start', colStart, 'colStart')}
+                    {this.inputs('Column End', colEnd, 'colEnd')}
+                  </Container>
                 </Container>
               </Container>
+            </Styles>
+            <Container main>
+              <h3>Quantity</h3>
+              <Container primary>
+                <Btn grid onClick={() => this.setState({ number: number - 1 })}>
+                  -
+                </Btn>
+                {number}
+                <Btn grid onClick={() => this.setState({ number: number + 1 })}>
+                  +
+                </Btn>
+              </Container>
             </Container>
-          </Styles>                        
-           <Container main>
-
-            <h3>Quantity</h3>
-            <Container primary>
-            
-              <Btn grid onClick={() => this.setState({ number: number - 1 })}>
-                -
-              </Btn>
-              {number}              
-              <Btn grid onClick={() => this.setState({ number: number + 1 })}>
-                +
-              </Btn>
-              
-            </Container>
-           </Container>
 
             <Btn code onClick={() => this.setState({ display: !display })}>
               Get Code
@@ -255,7 +313,7 @@ class grid extends Component {
             <Btn code onClick={() => this.setState({ display2: !display2 })}>
               Get Optimized Code
             </Btn>
-            <Icon/>
+            <Icon />
             <Modal
               display={display ? 'block' : 'none'}
               id="modal"
@@ -289,10 +347,8 @@ class grid extends Component {
                 <Pre>{`
 .container {
     display: grid;
-    grid-template-columns: repeat(${columns.split(' ').length}, ${
-                  columns.split(' ')[0]
-                })
-    grid-template-rows: (${rows.split(' ').length}, ${rows.split(' ')[0]})
+    grid-template-columns: ${find(columns)}
+    grid-template-rows: ${find(rows)}
     grid-gap: ${rowGap} ${columnGap}
 }
 

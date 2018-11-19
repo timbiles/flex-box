@@ -61,7 +61,7 @@ ${props =>
 `;
 
 export const Styles = styled.div`
-  &:not(:hover) {
+  /* &:not(:hover) {
     height: ${props => props.height};
     overflow: hidden;
     border-radius: 0 0 5px 5px;
@@ -88,7 +88,7 @@ export const Styles = styled.div`
   }
   &:hover:after {
     z-index: -1;
-  }
+  } */
 `;
 
 export const Flex = styled.div`
