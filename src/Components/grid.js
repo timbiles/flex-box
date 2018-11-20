@@ -112,12 +112,13 @@ class grid extends Component {
   };
 
   buttons = (e, f, g) => {
+    console.log(this.state[f])
     return (
       <Container primary>
         <Btn
           color="#EFC7C2"
-          hover='#dbb6b1'          
-          width='50%'
+          hover="#dbb6b1"
+          width="50%"
           onClick={() => {
             e > 1 &&
               this.setState({ [f]: e - 1 }, () => {
@@ -130,8 +131,9 @@ class grid extends Component {
         {e}
         <Btn
           color="#94bfbe"
-          width='50%'          
+          width="50%"
           onClick={() => {
+            this.state[f] <10 &&
             this.setState({ [f]: e + 1 }, () => {
               this.edit(g);
             });
@@ -317,34 +319,41 @@ class grid extends Component {
             <Container main>
               <h3>Quantity</h3>
               <Container primary>
-                <Btn 
-                color="#EFC7C2"
-                hover='#dbb6b1'                
-                width='50%'
-                grid onClick={() => this.setState({ number: number - 1 })}>
+                <Btn
+                  color="#EFC7C2"
+                  hover="#dbb6b1"
+                  width="50%"
+                  grid
+                  onClick={() => this.setState({ number: number - 1 })}
+                >
                   -
                 </Btn>
                 {number}
-                <Btn 
+                <Btn
                   color="#94bfbe"
-                width='50%'  
-                grid onClick={() => this.setState({ number: number + 1 })}>
+                  width="50%"
+                  grid
+                  onClick={() => this.setState(
+                    number <25 ?
+                    { number: number + 1 }
+                    : null
+                  )}
+                >
                   +
                 </Btn>
               </Container>
             </Container>
-          <Container main>
-
-            <Btn code onClick={() => this.setState({ display: !display })}>
-              Get Code
-            </Btn>
-            <Btn code onClick={() => this.setState({ display2: !display2 })}>
-              Get Optimized Code
-            </Btn>
-          </Container>
-          <Container main>
-            <Icon />
-          </Container>
+            <Container main>
+              <Btn code onClick={() => this.setState({ display: !display })}>
+                Get Code
+              </Btn>
+              <Btn code onClick={() => this.setState({ display2: !display2 })}>
+                Get Optimized Code
+              </Btn>
+            </Container>
+            <Container main>
+              <Icon />
+            </Container>
             <Modal
               display={display ? 'block' : 'none'}
               id="modal"
