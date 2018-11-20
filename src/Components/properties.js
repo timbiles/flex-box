@@ -42,6 +42,7 @@ class properties extends Component {
             return (
               <Container key={i}>
                 <Input
+                  main
                   name={name}
                   type="radio"
                   value={e}

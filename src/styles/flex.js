@@ -114,7 +114,7 @@ export const Pa = styled.p`
     css`
       box-shadow: 1px 5px 21px -1px #000;
       background: #f4f4f4;
-      border: 1px double rgba(146, 189, 189, .5);
+      border: 1px double rgba(146, 189, 189, 0.5);
       padding: ${props => props.padding || 'auto'};
       width: ${props => props.width || 'auto'};
       height: ${props => props.height};
@@ -163,12 +163,28 @@ export const Btn = styled.button`
     props.code &&
     css`
       font-size: 1.3em;
-      background: #8DA7BE;
+      background: #8da7be;
       color: #fff;
     `}
 `;
 
 export const Input = styled.input`
+  ${props =>
+    props.main &&
+    css`
+      -webkit-appearance: none;
+      width: 13px;
+      height: 13px;
+      border: 1px solid darkgray;
+      border-radius: 50%;
+      box-shadow: 0 0 5px 0px #c7c7c7;
+
+      &:hover {
+        box-shadow: 0 0 5px 0px #ffa500 inset;
+        cursor: pointer;
+      }
+    `}
+
   &:checked {
     background: #94bfbe;
   }
