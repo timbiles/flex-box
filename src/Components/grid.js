@@ -112,7 +112,6 @@ class grid extends Component {
   };
 
   buttons = (e, f, g) => {
-    console.log(this.state[f])
     return (
       <Container primary>
         <Btn

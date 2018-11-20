@@ -32,7 +32,11 @@ select {
 
 input:focus,
 select:focus  {
-  outline: none;
+  // outline: orange !important;
+}
+
+input {
+  outline: orange !important;
 }
 
 

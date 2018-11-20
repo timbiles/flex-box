@@ -1,4 +1,4 @@
-import styled, { keyframes, css } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Arrow = styled.div`
   position: fixed;
@@ -30,19 +30,6 @@ export const Arrow = styled.div`
   &:active {
     transform: scale(.98) ${props => props.rotate};    
   }
-`;
-
-const Exit = keyframes`
- 0% {
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-    opacity: 1;
-    }
-    100% {
-    -webkit-transform: translateX(-1000px);
-    transform: translateX(-1000px);
-    opacity: 0;
-    }
 `;
 
 export const Main = styled.div`

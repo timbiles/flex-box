@@ -188,6 +188,11 @@ export const Input = styled.input`
   &:checked {
     background: #94bfbe;
   }
+
+  &:focus {
+  outline: #94bfbe;
+}
+
   ${props =>
     props.secondary &&
     css`

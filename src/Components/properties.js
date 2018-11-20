@@ -12,7 +12,9 @@ class properties extends Component {
     widthUnit: 'px',
     heightUnit: 'px',
     paddingUnit: '%',
-    padding: '5%'
+    padding: '5%',
+    height: '',
+    width: ''
   };
 
   componentDidMount() {
@@ -20,16 +22,23 @@ class properties extends Component {
   }
 
   changeState = (e, val, name) => {
+    const {padding} = this.state
+    console.log(padding)
+    let n = padding && padding.replace(/\D/g, '')
+    let temp;
     this.setState({ [name]: { ...val, value: e.target.value } }, () => {
+      temp = padding
+      console.log(temp)
+      console.log(this.state.temp)
       this.state.wrap.value === 'nowrap' && this.state.number > 8
         ? this.setState({
             number: 8
           })
-        : this.state.direction.value === 'column'
-        ? this.setState({ padding: '3%' })
-        : this.state.direction.value === 'column-reverse'
-        ? this.setState({ padding: '3%' })
-        : this.setState({ padding: '5%' });
+        : this.state.direction.value === 'column' && n >= 3
+        ? this.setState({ padding: '3%', temp: temp})
+        : this.state.direction.value === 'column-reverse' && n >= 3
+        ? this.setState({ padding: '3%', temp: temp})
+        : this.setState({ padding: this.state.temp || temp});
     });
   };
 
@@ -64,15 +73,17 @@ class properties extends Component {
   };
 
   changeSize = (unit, str, measure) => {
-    const { padding } = this.state;
+    const { padding } = this.state;    
+    const newVal = unit && unit.replace(/\D/g, '')
     return (
       <Container third>
         <Pa secondary>{str.charAt(0).toUpperCase() + str.slice(1)}</Pa>
         <Input
           secondary
           type="number"
-          placeholder={str === 'padding' ? padding : 'auto'}
-          onChange={e => this.setState({ [str]: e.target.value + measure })}
+          placeholder={unit ? unit : str === 'padding' ? 0 : 'auto'}
+          value={newVal}
+          onChange={e => this.setState( e.target.value !== '' ? { [str]: e.target.value + measure, temp: '' } : { [str]: e.target.value, temp: '' })}
         />
         <select
           name={str}
