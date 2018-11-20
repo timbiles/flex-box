@@ -178,17 +178,3 @@ export const Input = styled.input`
       width: 50%;
     `}
 `;
-
-export const A = styled.a`
-  width: max-content;
-`;
-
-export const Icon = styled.svg`
-  height: 30px;
-  cursor: pointer;
-
-  &:hover {
-    fill: #94bfbe;
-    transition: 0.7s;
-  }
-`;

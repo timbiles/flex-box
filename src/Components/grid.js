@@ -128,7 +128,7 @@ class grid extends Component {
         </Btn>
         {e}
         <Btn
-          color="#96BE8C"
+          color="#94bfbe"
           width='50%'          
           onClick={() => {
             this.setState({ [f]: e + 1 }, () => {
@@ -324,13 +324,14 @@ class grid extends Component {
                 </Btn>
                 {number}
                 <Btn 
-                color="#96BE8C"
+                  color="#94bfbe"
                 width='50%'  
                 grid onClick={() => this.setState({ number: number + 1 })}>
                   +
                 </Btn>
               </Container>
             </Container>
+          <Container main>
 
             <Btn code onClick={() => this.setState({ display: !display })}>
               Get Code
@@ -338,7 +339,10 @@ class grid extends Component {
             <Btn code onClick={() => this.setState({ display2: !display2 })}>
               Get Optimized Code
             </Btn>
+          </Container>
+          <Container main>
             <Icon />
+          </Container>
             <Modal
               display={display ? 'block' : 'none'}
               id="modal"

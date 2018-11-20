@@ -11,8 +11,7 @@ export const Grid = styled.div`
 
 export const SideNav = styled.div`
   display: inline-grid;
-  grid-template-rows: repeat(6, 0.2fr) repeat(4, 30px);
-  grid-row-gap: 10px;
+  grid-template-rows: repeat(6, 0.2fr) repeat(2, .1fr);
   background: #f4f4f4;
   height: 87vh;
   overflow: scroll;

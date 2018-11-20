@@ -40,7 +40,7 @@ class properties extends Component {
         {val &&
           val.arr.map((e, i) => {
             return (
-              <Container key={i} >
+              <Container key={i}>
                 <Input
                   name={name}
                   type="radio"
@@ -65,7 +65,7 @@ class properties extends Component {
   changeSize = (unit, str, measure) => {
     const { padding } = this.state;
     return (
-      <Container third >
+      <Container third>
         <Pa secondary>{str.charAt(0).toUpperCase() + str.slice(1)}</Pa>
         <Input
           secondary
@@ -174,12 +174,15 @@ class properties extends Component {
 
             <Container secondary>
               <Container third>
-                <Btn code onClick={() => this.setState({ display: !display })}>
+                <Btn
+                  width="max-content"
+                  code
+                  onClick={() => this.setState({ display: !display })}
+                >
                   Get Code
                 </Btn>
               </Container>
 
-              <Icon />
               <Modal
                 display={display ? 'block' : 'none'}
                 id="modal"
@@ -204,6 +207,9 @@ class properties extends Component {
                 `}</Pre>
                 </Section>
               </Modal>
+            </Container>
+            <Container secondary>
+              <Icon />
             </Container>
           </Container>
           <Flex
