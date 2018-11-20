@@ -138,6 +138,7 @@ class properties extends Component {
               <Container third>
                 <Btn
                   color="#EFC7C2"
+                  hover='#dbb6b1'
                   width="max-content"
                   onClick={() =>
                     this.setState(number !== 1 ? { number: number - 1 } : null)

@@ -146,7 +146,7 @@ export const Btn = styled.button`
   background: ${props => props.color};
 
   &:hover {
-    background: #9cb8b8;
+  background: ${props => props.hover ? props.hover : '#9cb8b8'};
   }
 
   &:focus {

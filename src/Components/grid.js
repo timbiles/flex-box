@@ -116,6 +116,7 @@ class grid extends Component {
       <Container primary>
         <Btn
           color="#EFC7C2"
+          hover='#dbb6b1'          
           width='50%'
           onClick={() => {
             e > 1 &&
@@ -318,6 +319,7 @@ class grid extends Component {
               <Container primary>
                 <Btn 
                 color="#EFC7C2"
+                hover='#dbb6b1'                
                 width='50%'
                 grid onClick={() => this.setState({ number: number - 1 })}>
                   -
