@@ -316,11 +316,17 @@ class grid extends Component {
             <Container main>
               <h3>Quantity</h3>
               <Container primary>
-                <Btn grid onClick={() => this.setState({ number: number - 1 })}>
+                <Btn 
+                color="#EFC7C2"
+                width='50%'
+                grid onClick={() => this.setState({ number: number - 1 })}>
                   -
                 </Btn>
                 {number}
-                <Btn grid onClick={() => this.setState({ number: number + 1 })}>
+                <Btn 
+                color="#96BE8C"
+                width='50%'  
+                grid onClick={() => this.setState({ number: number + 1 })}>
                   +
                 </Btn>
               </Container>

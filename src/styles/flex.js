@@ -139,7 +139,6 @@ export const Pa = styled.p`
 
 export const Btn = styled.button`
   cursor: pointer;
-  /* width: max-content; */
   width: ${props => props.width};
   padding: 1% 3%;
   margin: 0 5%;
@@ -171,7 +170,7 @@ export const Btn = styled.button`
 
 export const Input = styled.input`
   &:checked {
-    background: #40e0d0;
+    background: #94bfbe;
   }
   ${props =>
     props.secondary &&

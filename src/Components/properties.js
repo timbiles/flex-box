@@ -146,7 +146,8 @@ class properties extends Component {
                 </Btn>
                 {number}
                 <Btn
-                  color="#96BE8C"
+                  color="#94bfbe"
+                  // 8DA7BE
                   width="max-content"
                   onClick={() =>
                     this.setState(
