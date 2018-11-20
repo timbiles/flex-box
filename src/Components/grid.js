@@ -324,7 +324,11 @@ class grid extends Component {
                   hover="#dbb6b1"
                   width="50%"
                   grid
-                  onClick={() => this.setState({ number: number - 1 })}
+                  onClick={() => this.setState(
+                    number >1 ?
+                    { number: number - 1 }
+                    : null
+                  )}
                 >
                   -
                 </Btn>
