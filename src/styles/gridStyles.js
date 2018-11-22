@@ -99,7 +99,7 @@ export const Container = styled.div`
         background: #fff;
         border-radius: 5px;
         grid-template-columns: 1fr 1fr;
-        animation: ${Entrance} 0.8s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+        /* animation: ${Entrance} 0.8s cubic-bezier(0.39, 0.575, 0.565, 1) both; */
       `}
 `;
 
