@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, {keyframes} from 'styled-components';
 
-const dots = (props) => {
+const dots = props => {
     return (
         <Wrapper onClick={() => props.hit()}>
             <Dot delay='0s'/>
@@ -12,7 +12,6 @@ const dots = (props) => {
 };
 
 export default dots;
-
 
 
 const Up = keyframes`

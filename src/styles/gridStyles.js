@@ -99,7 +99,6 @@ export const Container = styled.div`
         background: #fff;
         border-radius: 5px;
         grid-template-columns: 1fr 1fr;
-        /* animation: ${Entrance} 0.8s cubic-bezier(0.39, 0.575, 0.565, 1) both; */
       `}
 `;
 
@@ -164,25 +163,11 @@ export const Text = styled.code`
     `}
 `;
 
-
 export const Counter = styled.div`
   display: grid;
   grid-template-columns: 80px 100px 0.25fr;
   border-radius: 5px;
   align-items: center;
-`;
-
-
-
-const Entrance = keyframes`
-0% {
-    transform: translate(-15px, -15px);
-    opacity: 0;
-    }
-    100% {
-    transform: translate(0);
-    opacity: 1;
-    }
 `;
 
 const Typing = keyframes`

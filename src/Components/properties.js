@@ -8,13 +8,13 @@ import Icon from './icon';
 class properties extends Component {
   state = {
     number: 4,
-    display: false,
     widthUnit: 'px',
     heightUnit: 'px',
     paddingUnit: '%',
     padding: '5%',
     height: '',
-    width: ''
+    width: '',
+    display: false
   };
 
   componentDidMount() {
