@@ -258,6 +258,8 @@ class grid extends Component {
       dots2
     } = this.state;
 
+
+
     const find = str => {
       let arr = str.split(' ');
 

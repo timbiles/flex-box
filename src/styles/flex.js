@@ -70,6 +70,8 @@ export const Styles = styled.div`
     position: relative;
     border-bottom: 2.5px solid rgba(191, 191, 191, 0.4);
     padding: 1%;
+    /* transform: rotateX(-50deg); */
+    perspective: 400px;
   }
   padding: 1%;
 

@@ -23,13 +23,10 @@ class properties extends Component {
 
   changeState = (e, val, name) => {
     const {padding} = this.state
-    console.log(padding)
     let n = padding && padding.replace(/\D/g, '')
     let temp;
     this.setState({ [name]: { ...val, value: e.target.value } }, () => {
       temp = padding
-      console.log(temp)
-      console.log(this.state.temp)
       this.state.wrap.value === 'nowrap' && this.state.number > 8
         ? this.setState({
             number: 8
@@ -72,8 +69,7 @@ class properties extends Component {
     }
   };
 
-  changeSize = (unit, str, measure) => {
-    const { padding } = this.state;    
+  changeSize = (unit, str, measure) => { 
     const newVal = unit && unit.replace(/\D/g, '')
     return (
       <Container third>
@@ -160,7 +156,6 @@ class properties extends Component {
                 {number}
                 <Btn
                   color="#94bfbe"
-                  // 8DA7BE
                   width="max-content"
                   onClick={() =>
                     this.setState(
