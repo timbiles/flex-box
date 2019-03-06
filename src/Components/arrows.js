@@ -2,12 +2,12 @@ import React from 'react';
 import { Container, Box, Text } from '../styles/gridStyles';
 import { Modal } from '../styles/modal';
 
-const arrows = props => {
+const arrows = ({id, display, handleClose}) => {
   return (
     <Modal
-      id={props.id}
-      display={props.display}
-      onClick={e => props.handleClose(e, 'arrowModal', 'arrowDisplay')}
+      id={id}
+      display={display}
+      onClick={e => handleClose(e, 'arrowModal', 'arrowDisplay')}
     >
       <Text main>
           Click on a box to move it around with the arrow keys!

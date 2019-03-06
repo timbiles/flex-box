@@ -15,7 +15,7 @@ const icon = () => {
         </Icon>
       </A>
       <Wrapper >
-        <P>© 2018 Olive Branch Designs</P>
+        <P>© 2019 Olive Branch Designs</P>
         <Img
           className="olive"
           src="https://image.flaticon.com/icons/svg/85/85254.svg"

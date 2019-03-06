@@ -29,12 +29,12 @@ class grid extends Component {
     rowGap: '5px',
     columnGap: '5px',
     num: '',
+    boxShadow: false,
     display: false,
     display2: false,
-    boxShadow: false,
-    shift: false,
     dots: false,
-    dots2: false
+    dots2: false,
+    shift: false
   };
 
   keyPress = e => {
@@ -368,10 +368,10 @@ class grid extends Component {
                 <Pre>{`
 .container {
     display: grid;
-    grid-template-columns: ${columns}
-    grid-template-rows: ${rows}
-    grid-row-gap: ${rowGap}
-    grid-column-gap: ${columnGap}   
+    grid-template-columns: ${columns};
+    grid-template-rows: ${rows};
+    grid-row-gap: ${rowGap};
+    grid-column-gap: ${columnGap};
 }
 ${num &&
 `.box {
@@ -393,9 +393,9 @@ ${num &&
                 <Pre>{`
 .container {
     display: grid;
-    grid-template-columns: ${find(columns)}
-    grid-template-rows: ${find(rows)}
-    grid-gap: ${rowGap} ${columnGap}
+    grid-template-columns: ${find(columns)};
+    grid-template-rows: ${find(rows)};
+    grid-gap: ${rowGap} ${columnGap};
 }
 
 ${num && 

@@ -208,9 +208,9 @@ class properties extends Component {
 }
 
 .box {
-    height: ${width || 'auto'}
-    width: ${height || 'auto'}
-    padding: ${padding}
+    height: ${width || 'auto'};
+    width: ${height || 'auto'};
+    padding: ${padding};
 }
                 `}</Pre>
                 </Section>
