@@ -93,14 +93,12 @@ class grid extends Component {
   };
 
   edit = (value, str) => {
-    let arr = [];
-    let temp;
     if (str === 'sub') {
-      temp = this.state[value].split(' ');
+      let temp = this.state[value].split(' ');
       temp.splice(-1);
       this.setState({ [value]: temp.join(' ') });
     } else {
-      arr = [...[this.state[value]], '1fr'].join(' ');
+      let arr = [...[this.state[value]], '1fr'].join(' ');
       this.setState({ [value]: arr });
     }
   };
@@ -269,9 +267,8 @@ class grid extends Component {
           count++;
           arr.splice(i, 1);
         }
-        count === 1
-          ? (arr[i] = arr[i])
-          : arr.splice(i, 1, `repeat(${count}, ${arr[i]})`);
+        if (count === 1) {continue}
+        else { arr.splice(i, 1, `repeat(${count}, ${arr[i]})`) }
       }
       return arr.join(' ');
     };

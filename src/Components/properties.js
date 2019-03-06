@@ -69,7 +69,7 @@ class properties extends Component {
     }
   };
 
-  changeSize = (unit, str, measure) => { 
+  changeSize = (unit, str, measure, x) => { 
     const newVal = unit && unit.replace(/\D/g, '')
     return (
       <Container third>
@@ -83,12 +83,12 @@ class properties extends Component {
         />
         <select
           name={str}
-          onChange={e =>
+          onChange={e => {
             this.setState({
-              measure: e.target.value,
+              [x]: e.target.value,
               [str]: this.state[str].replace(/\D/g, '') + e.target.value
             })
-          }
+          }}
         >
           {str === 'padding' ? (
             <>
@@ -175,9 +175,9 @@ class properties extends Component {
             </Container>
             <Container secondary>
               <h2> Box Size</h2>
-              {this.changeSize(width, 'width', widthUnit)}
-              {this.changeSize(height, 'height', heightUnit)}
-              {this.changeSize(padding, 'padding', paddingUnit)}
+              {this.changeSize(width, 'width', widthUnit, 'widthUnit')}
+              {this.changeSize(height, 'height', heightUnit, 'heightUnit')}
+              {this.changeSize(padding, 'padding', paddingUnit, 'paddingUnit')}
             </Container>
 
             <Container secondary>
@@ -204,7 +204,7 @@ class properties extends Component {
     wrap: ${wrap && wrap.value};
     justify-content: ${justifyContent && justifyContent.value};
     align-items: ${alignItems && alignItems.value};
-    alignt-content: ${alignContent && alignContent.value};
+    align-content: ${alignContent && alignContent.value};
 }
 
 .box {

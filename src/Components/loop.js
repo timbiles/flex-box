@@ -18,7 +18,7 @@ const Loop = ({
   keyPress,
   keyUp
 }) => {
-  
+
   const arr = Array(number).fill(0).map((e, i) => i + 1);
 
   return arr.map((e, i) => {
@@ -39,7 +39,7 @@ const Loop = ({
         {e}
       </Cont>
     ) : (
-      <Pa main key={i} width={width && width} height={height} padding={padding}>
+      <Pa main key={i} number={number} width={width && width} height={height} padding={padding}>
         {e}
       </Pa>
     );

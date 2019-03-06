@@ -8,8 +8,6 @@ export const Header = styled.div`
   height: 10vh;
   width: 98vw;
   background: linear-gradient(to right, #94bfbe, #709192);
-  /* background: #94bfbe; */
-  /* 668586 */
   font-size: 2em;
   border-radius: 5px;
   margin-bottom: 1vh;
@@ -70,7 +68,6 @@ export const Styles = styled.div`
     position: relative;
     border-bottom: 2.5px solid rgba(191, 191, 191, 0.4);
     padding: 1%;
-    /* transform: rotateX(-50deg); */
     perspective: 400px;
   }
   padding: 1%;
@@ -108,6 +105,7 @@ export const Flex = styled.div`
   width: ${props => props.width};
   height: ${props => props.height};
   border-radius: 0 5px 5px 0;
+  overflow-x: hidden;
 `;
 
 export const Pa = styled.p`
@@ -119,6 +117,7 @@ export const Pa = styled.p`
       border: 1px double rgba(146, 189, 189, 0.5);
       padding: ${props => props.padding || 'auto'};
       width: ${props => props.width || 'auto'};
+      max-width: ${props => (1 /props.number)*100 + '%'};
       height: ${props => props.height};
       overflow-y: auto;
     `}
