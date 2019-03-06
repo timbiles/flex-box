@@ -373,13 +373,14 @@ class grid extends Component {
     grid-row-gap: ${rowGap};
     grid-column-gap: ${columnGap};
 }
-${num &&
+${num  || num === 0 ?
 `.box {
       grid-row-start: ${rowStart};
       grid-row-end: ${rowEnd};
       grid-column-start: ${colStart};
       grid-column-end: ${colEnd};
   }`
+  : ''
 }
                 `}</Pre>
               </Section>
@@ -398,11 +399,11 @@ ${num &&
     grid-gap: ${rowGap} ${columnGap};
 }
 
-${num && 
+${num || num === 0 ?
   `.box {
     grid-area: ${rowStart}/${colStart}/${rowEnd}/${colEnd}
 }
-`}
+` : ''}
                 `}</Pre>
               </Section>
             </Modal>
